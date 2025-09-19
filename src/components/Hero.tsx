@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaTwitter, FaDownload } from 'react-icons/fa';
+import logoImage from '../assets/Logo.png';
 
 /**
  * Componente da seção principal (Hero)
@@ -66,8 +67,12 @@ const Hero: React.FC = () => {
             className="mb-8 flex justify-center"
           >
             <div className="relative">
-              <div className="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-primary-900 to-primary-500 rounded-full flex items-center justify-center shadow-2xl">
-                <span className="text-white font-bold text-4xl md:text-5xl">LM</span>
+              <div className="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-primary-900 to-primary-500 rounded-full flex items-center justify-center shadow-2xl overflow-hidden">
+                <img 
+                  src={logoImage} 
+                  alt="Logo Lucas Machado" 
+                  className="w-full h-full object-cover rounded-full"
+                />
               </div>
               {/* Indicador de status online */}
               <div className="absolute bottom-2 right-2 w-6 h-6 bg-green-500 border-4 border-white rounded-full"></div>
@@ -80,7 +85,7 @@ const Hero: React.FC = () => {
             className="mb-4"
           >
             <span className="inline-block px-4 py-2 bg-primary-500/10 text-primary-500 rounded-full text-sm font-medium mb-4">
-              👋 Olá, eu sou
+              Olá, eu sou
             </span>
           </motion.div>
 
