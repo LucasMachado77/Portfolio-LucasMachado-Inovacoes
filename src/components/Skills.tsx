@@ -3,13 +3,8 @@ import { motion } from 'framer-motion';
 import { 
   FaReact, 
   FaNodeJs, 
-  FaJs, 
-  FaPython, 
-  FaGitAlt, 
-  FaDocker,
   FaAws,
   FaDatabase,
-  FaMobile,
   FaCloud,
   FaCode,
   FaTools
