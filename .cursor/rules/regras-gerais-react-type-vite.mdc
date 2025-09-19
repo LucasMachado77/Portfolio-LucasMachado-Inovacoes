@@ -1,0 +1,58 @@
+---
+description: Regras do projeto (React + TypeScript + Vite + Tailwind + Supabase)
+globs:
+  - "src/**/*.ts"
+  - "src/**/*.tsx"
+  - "scripts/**/*.ts"
+alwaysApply: true
+---
+
+# Convenções gerais
+- Sempre usar React com TypeScript.
+- Componentes devem ser **function components** e nunca `class`.
+- Props devem ser tipadas com `interface` ou `type`.
+- Sempre usar hooks (`useState`, `useEffect`, `useAuth`, etc.) em vez de classes.
+
+# Estilização
+- Usar apenas TailwindCSS para estilos, sem CSS inline.
+- Seguir o padrão de design system (cores, espaçamentos, botões).
+- Preferir `className` claras e reutilizáveis.
+
+# Supabase
+- Usar sempre a lib oficial `@supabase/supabase-js`.
+- Queries em SQL devem seguir sintaxe PostgreSQL.
+
+# Boas práticas
+- Nome de variáveis e funções sempre em inglês.
+- Comentários explicativos devem estar em português.
+- Nunca deixar `console.log` em produção, use logger próprio.
+- Sempre validar dados vindos de APIs externas.
+
+# Estrutura do projeto
+- Hooks personalizados em `src/hooks/`.
+- Serviços de API em `src/services/`.
+- Components reutilizáveis em `src/components/`.
+- Pages em `src/pages/`.
+- Testes em `__tests__` ou no mesmo diretório com `.test.tsx`.
+
+# Testes
+- Usar Jest + React Testing Library.
+- Todo componente com lógica deve ter teste unitário.
+- Testes de integração para autenticação e rotas.
+
+# Performance
+- Usar `React.lazy` e `Suspense` para lazy loading de páginas.
+- Sempre tipar o retorno de funções assíncronas.
+- Evitar re-renderizações desnecessárias com `memo` e `useCallback`.
+- Nunca duplicar lógica de acesso ao Supabase.
+
+# Boas práticas
+- Nunca deixar `console.log` em produção → usar logger centralizado.
+- Sempre validar dados vindos de APIs externas.
+- Seguir ESLint + Prettier configurados no projeto.
+- Evitar código morto ou não utilizado.
+
+# Documentação
+- Funções exportadas devem ter comentários em português explicando sua função.
+- Código deve ser autodescritivo, com nomes claros e consistentes.
+- Documentar props de componentes quando forem complexas.

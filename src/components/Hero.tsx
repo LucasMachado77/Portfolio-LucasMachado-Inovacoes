@@ -1,0 +1,206 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { FaGithub, FaLinkedin, FaTwitter, FaDownload } from 'react-icons/fa';
+
+/**
+ * Componente da seção principal (Hero)
+ * Apresenta o desenvolvedor com call-to-action e links sociais
+ */
+const Hero: React.FC = () => {
+  // Dados do desenvolvedor
+  const developerInfo = {
+    name: 'Lucas Machado',
+    title: 'Desenvolvedor Full Stack',
+    subtitle: 'Especialista em Inovações Tecnológicas',
+    description: 'Crio soluções digitais inovadoras combinando tecnologia de ponta com design moderno. Transformo ideias em realidade através de código limpo e experiências excepcionais.',
+    location: 'Brasil',
+    email: 'lucas@example.com',
+  };
+
+  // Links sociais
+  const socialLinks = [
+    { name: 'GitHub', icon: FaGithub, href: 'https://github.com', color: 'hover:text-gray-900' },
+    { name: 'LinkedIn', icon: FaLinkedin, href: 'https://linkedin.com', color: 'hover:text-blue-600' },
+    { name: 'Twitter', icon: FaTwitter, href: 'https://twitter.com', color: 'hover:text-blue-400' },
+  ];
+
+  // Animações para os elementos
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
+
+  return (
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Background com padrão diagonal inspirado na identidade visual */}
+      <div className="absolute inset-0 section-pattern"></div>
+      
+      {/* Elementos decorativos de fundo */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl"></div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="text-center max-w-4xl mx-auto"
+        >
+          {/* Avatar/Logo */}
+          <motion.div
+            variants={itemVariants}
+            className="mb-8 flex justify-center"
+          >
+            <div className="relative">
+              <div className="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-primary-900 to-primary-500 rounded-full flex items-center justify-center shadow-2xl">
+                <span className="text-white font-bold text-4xl md:text-5xl">LM</span>
+              </div>
+              {/* Indicador de status online */}
+              <div className="absolute bottom-2 right-2 w-6 h-6 bg-green-500 border-4 border-white rounded-full"></div>
+            </div>
+          </motion.div>
+
+          {/* Saudação */}
+          <motion.div
+            variants={itemVariants}
+            className="mb-4"
+          >
+            <span className="inline-block px-4 py-2 bg-primary-500/10 text-primary-500 rounded-full text-sm font-medium mb-4">
+              👋 Olá, eu sou
+            </span>
+          </motion.div>
+
+          {/* Nome */}
+          <motion.h1
+            variants={itemVariants}
+            className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-primary-900 via-primary-500 to-accent-500 bg-clip-text text-transparent"
+          >
+            {developerInfo.name}
+          </motion.h1>
+
+          {/* Título */}
+          <motion.h2
+            variants={itemVariants}
+            className="text-2xl md:text-3xl font-semibold text-primary-500 mb-2"
+          >
+            {developerInfo.title}
+          </motion.h2>
+
+          {/* Subtítulo */}
+          <motion.h3
+            variants={itemVariants}
+            className="text-lg md:text-xl text-secondary-600 mb-6"
+          >
+            {developerInfo.subtitle}
+          </motion.h3>
+
+          {/* Descrição */}
+          <motion.p
+            variants={itemVariants}
+            className="text-lg md:text-xl text-secondary-700 mb-8 max-w-3xl mx-auto leading-relaxed"
+          >
+            {developerInfo.description}
+          </motion.p>
+
+          {/* Informações adicionais */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-wrap justify-center items-center gap-6 mb-8 text-secondary-600"
+          >
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
+              <span>{developerInfo.location}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-accent-500 rounded-full"></div>
+              <span>{developerInfo.email}</span>
+            </div>
+          </motion.div>
+
+          {/* Botões de ação */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+          >
+            <motion.a
+              href="#projects"
+              className="btn-primary inline-flex items-center justify-center gap-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Ver Meus Projetos
+            </motion.a>
+            <motion.a
+              href="#contact"
+              className="btn-secondary inline-flex items-center justify-center gap-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaDownload className="w-4 h-4" />
+              Baixar CV
+            </motion.a>
+          </motion.div>
+
+          {/* Links sociais */}
+          <motion.div
+            variants={itemVariants}
+            className="flex justify-center gap-6"
+          >
+            {socialLinks.map((social, index) => (
+              <motion.a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-secondary-600 ${social.color} transition-all duration-300 hover:shadow-xl hover:-translate-y-1`}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 + index * 0.1 }}
+              >
+                <social.icon className="w-5 h-5" />
+              </motion.a>
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Indicador de scroll */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+      >
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="w-6 h-10 border-2 border-primary-500 rounded-full flex justify-center"
+        >
+          <motion.div
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-1 h-3 bg-primary-500 rounded-full mt-2"
+          ></motion.div>
+        </motion.div>
+      </motion.div>
+    </section>
+  );
+};
+
+export default Hero;
