@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import LanguageSelector from './LanguageSelector';
 
 /**
  * Interface para os itens do menu de navegação
@@ -55,17 +56,18 @@ const Header: React.FC = () => {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <motion.div
+          <motion.a
+            href="#contact"
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2"
+            className="flex items-center space-x-2 relative z-10 cursor-pointer"
           >
             <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-primary-900 to-primary-500 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm md:text-base">LM</span>
             </div>
-            <span className="font-bold text-primary-900 text-lg md:text-xl">
+            <span className="font-bold text-primary-900 text-lg md:text-xl hover:text-primary-500 transition-colors duration-300">
               Lucas Machado
             </span>
-          </motion.div>
+          </motion.a>
 
           {/* Menu Desktop */}
           <div className="hidden md:flex items-center space-x-8">
@@ -85,8 +87,12 @@ const Header: React.FC = () => {
             ))}
           </div>
 
-          {/* Botão de Contato Desktop */}
-          <div className="hidden md:block">
+          {/* Botões de Ação Desktop */}
+          <div className="hidden md:flex items-center space-x-4">
+            {/* Seletor de Idioma */}
+            <LanguageSelector />
+
+            {/* Botão de Contato */}
             <motion.a
               href="#contact"
               className="btn-primary"
@@ -154,13 +160,23 @@ const Header: React.FC = () => {
                 {item.name}
               </motion.a>
             ))}
-            <motion.a
-              href="#contact"
-              onClick={handleNavClick}
-              className="block mx-4 mt-4 btn-primary text-center"
+            {/* Seletor de Idioma Mobile */}
+            <motion.div
+              className="mx-4 mt-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: isMenuOpen ? 1 : 0, y: isMenuOpen ? 0 : 20 }}
               transition={{ delay: navItems.length * 0.1 }}
+            >
+              <LanguageSelector />
+            </motion.div>
+
+            <motion.a
+              href="#contact"
+              onClick={handleNavClick}
+              className="block mx-4 mt-2 btn-primary text-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: isMenuOpen ? 1 : 0, y: isMenuOpen ? 0 : 20 }}
+              transition={{ delay: (navItems.length + 1) * 0.1 }}
             >
               Vamos Conversar
             </motion.a>

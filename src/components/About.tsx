@@ -31,47 +31,47 @@ const About: React.FC = () => {
   // Dados de experiência profissional
   const experiences: Experience[] = [
     {
-      title: 'Desenvolvedor Full Stack Senior',
-      company: 'Tech Innovations Corp',
-      period: '2022 - Presente',
-      description: 'Desenvolvimento de aplicações web modernas usando React, Node.js e tecnologias cloud. Liderança de equipes e implementação de boas práticas de desenvolvimento.',
-      technologies: ['React', 'Node.js', 'TypeScript', 'AWS', 'Docker'],
+      title: 'SysOps Analyst',
+      company: 'Kyndryl',
+      period: 'Dec 2024 - Present',
+      description: 'Monitored and managed critical production systems (Linux, Flexcube, Sifox, VMware, Dynatrace). Automated routines and incident handling using scripting and IBM Workload Scheduler (IWS).',
+      technologies: ['Linux', 'VMware', 'Dynatrace', 'IBM IWS', 'Automation'],
     },
     {
-      title: 'Desenvolvedor Frontend',
-      company: 'Digital Solutions Ltd',
-      period: '2020 - 2022',
-      description: 'Criação de interfaces de usuário responsivas e interativas. Colaboração com designers e backend developers para entregar produtos de alta qualidade.',
-      technologies: ['React', 'Vue.js', 'JavaScript', 'SASS', 'Figma'],
+      title: 'Windows Server Specialist',
+      company: 'Prefeitura Municipal de Maricá',
+      period: 'Mar 2018 - Sep 2023',
+      description: 'Implementation of ITIL as manager in 4 processes: Request Management; Incident Management; Problem Management and Service Desk. Administered Windows Server and VMware vCenter environments.',
+      technologies: ['Windows Server', 'VMware vCenter', 'ITIL', 'Active Directory', 'Zabbix', 'Grafana'],
     },
     {
-      title: 'Desenvolvedor Junior',
-      company: 'StartupTech',
-      period: '2019 - 2020',
-      description: 'Primeiros passos na carreira desenvolvendo pequenos projetos e aprendendo as melhores práticas de desenvolvimento de software.',
-      technologies: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
+      title: 'IT Technician',
+      company: 'Perfil X Construtora',
+      period: 'Jul 2015 - Aug 2017',
+      description: 'Provided user support, computer maintenance, and local network administration.',
+      technologies: ['Network Administration', 'User Support', 'Computer Maintenance'],
     },
   ];
 
   // Dados de formação acadêmica
   const education: Education[] = [
     {
-      degree: 'Bacharelado em Ciência da Computação',
-      institution: 'Universidade Federal de Tecnologia',
-      period: '2015 - 2019',
-      description: 'Formação sólida em fundamentos da computação, algoritmos, estruturas de dados e desenvolvimento de software.',
+      degree: 'MSc in Computer Engineering (IoT)',
+      institution: 'Instituto Politécnico de Tomar, Portugal',
+      period: '2024 - 2026',
+      description: 'Mestrado em Engenharia de Computadores com foco em IoT e tecnologias emergentes.',
     },
     {
-      degree: 'Especialização em Desenvolvimento Web',
-      institution: 'Instituto de Tecnologia Avançada',
-      period: '2020 - 2021',
-      description: 'Especialização em tecnologias web modernas, arquitetura de software e metodologias ágeis.',
+      degree: 'IT and Systems Technician',
+      institution: 'IEFP, Portugal',
+      period: '2023 - 2024',
+      description: 'Formação técnica em TI e sistemas, preparando para carreira em tecnologia.',
     },
     {
-      degree: 'Certificação AWS Solutions Architect',
-      institution: 'Amazon Web Services',
-      period: '2022',
-      description: 'Certificação profissional em arquitetura de soluções na nuvem AWS.',
+      degree: 'BSc in Mechanical Engineering',
+      institution: 'Estácio, Brazil',
+      period: '2016 - 2023',
+      description: 'Graduação em Engenharia Mecânica com base sólida em resolução de problemas e análise técnica.',
     },
   ];
 

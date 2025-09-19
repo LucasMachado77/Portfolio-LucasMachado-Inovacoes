@@ -42,8 +42,8 @@ const Contact: React.FC = () => {
   // Dados de contato
   const contactInfo: ContactInfo = {
     email: 'eng.lucasmachador@gmail.com',
-    phone: '+351 963 260 301',
-    location: 'Lisboa, Portugal',
+    phone: '+351 963 206 301',
+    location: 'Portugal',
     linkedin: 'https://linkedin.com/in/lucasmachado',
     github: 'https://github.com/LucasMachado77',
     instagram: 'https://instagram.com/lucasmachado___',

@@ -11,17 +11,17 @@ const Hero: React.FC = () => {
   // Dados do desenvolvedor
   const developerInfo = {
     name: 'Lucas Machado',
-    title: 'Desenvolvedor Full Stack',
-    subtitle: 'Especialista em Inovações Tecnológicas',
-    description: 'Crio soluções digitais inovadoras combinando tecnologia de ponta com design moderno. Transformo ideias em realidade através de código limpo e experiências excepcionais.',
-    location: 'Brasil',
-    email: 'lucas@example.com',
+    title: 'Full Stack Developer',
+    subtitle: 'Developer & Systems Engineer',
+    description: 'Developer & Systems Engineer with experience in critical infrastructure, automation, and web/mobile development. Built SaaS with React, TypeScript, Vite, Tailwind and Supabase/PostgreSQL. Skilled in webhooks/API integrations, Docker, and observability.',
+    location: 'Portugal',
+    email: 'eng.lucasmachador@gmail.com',
   };
 
   // Links sociais
   const socialLinks = [
-    { name: 'GitHub', icon: FaGithub, href: 'https://github.com', color: 'hover:text-gray-900' },
-    { name: 'LinkedIn', icon: FaLinkedin, href: 'https://linkedin.com', color: 'hover:text-blue-600' },
+    { name: 'GitHub', icon: FaGithub, href: 'https://github.com/LucasMachado77', color: 'hover:text-gray-900' },
+    { name: 'LinkedIn', icon: FaLinkedin, href: 'https://linkedin.com/in/lucasmachado', color: 'hover:text-blue-600' },
     { name: 'Twitter', icon: FaTwitter, href: 'https://twitter.com', color: 'hover:text-blue-400' },
   ];
 
@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 md:pt-24">
       {/* Background com padrão diagonal inspirado na identidade visual */}
       <div className="absolute inset-0 section-pattern"></div>
       
@@ -54,7 +54,7 @@ const Hero: React.FC = () => {
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl"></div>
       
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mt-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"

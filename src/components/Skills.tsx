@@ -43,45 +43,47 @@ const Skills: React.FC = () => {
       skills: [
         { name: 'React', level: 95, description: 'Desenvolvimento de interfaces modernas e interativas' },
         { name: 'TypeScript', level: 90, description: 'Tipagem estática para JavaScript' },
-        { name: 'Next.js', level: 85, description: 'Framework React para produção' },
+        { name: 'Vite', level: 85, description: 'Build tool moderno e rápido' },
         { name: 'Tailwind CSS', level: 92, description: 'Framework CSS utilitário' },
-        { name: 'Vue.js', level: 80, description: 'Framework JavaScript progressivo' },
+        { name: 'JavaScript', level: 88, description: 'Linguagem principal para desenvolvimento web' },
+        { name: 'HTML/CSS', level: 95, description: 'Fundamentos do desenvolvimento web' },
       ],
     },
     {
-      name: 'Backend',
-      icon: FaNodeJs,
+      name: 'Backend & Database',
+      icon: FaDatabase,
       color: 'from-green-400 to-green-600',
       skills: [
-        { name: 'Node.js', level: 90, description: 'Runtime JavaScript no servidor' },
-        { name: 'Express.js', level: 88, description: 'Framework web para Node.js' },
-        { name: 'Python', level: 85, description: 'Linguagem versátil e poderosa' },
-        { name: 'FastAPI', level: 82, description: 'Framework moderno para APIs Python' },
-        { name: 'PostgreSQL', level: 87, description: 'Banco de dados relacional' },
+        { name: 'Supabase', level: 90, description: 'Backend-as-a-Service com PostgreSQL' },
+        { name: 'PostgreSQL', level: 87, description: 'Banco de dados relacional robusto' },
+        { name: 'MySQL', level: 80, description: 'Sistema de gerenciamento de banco de dados' },
+        { name: 'Ruby on Rails', level: 75, description: 'Framework web em Ruby' },
+        { name: 'API Integration', level: 88, description: 'Integração de APIs e webhooks' },
       ],
     },
     {
-      name: 'Cloud & DevOps',
-      icon: FaCloud,
+      name: 'Mobile & Languages',
+      icon: FaCode,
       color: 'from-purple-400 to-purple-600',
       skills: [
-        { name: 'AWS', level: 85, description: 'Serviços de nuvem da Amazon' },
-        { name: 'Docker', level: 88, description: 'Containerização de aplicações' },
-        { name: 'Kubernetes', level: 75, description: 'Orquestração de containers' },
-        { name: 'CI/CD', level: 82, description: 'Integração e entrega contínua' },
-        { name: 'Terraform', level: 70, description: 'Infraestrutura como código' },
+        { name: 'Kotlin', level: 80, description: 'Desenvolvimento Android nativo' },
+        { name: 'Java', level: 85, description: 'Linguagem versátil para múltiplas plataformas' },
+        { name: 'Ruby', level: 75, description: 'Linguagem elegante e produtiva' },
+        { name: 'C/C++', level: 70, description: 'Linguagens de programação de sistema' },
       ],
     },
     {
-      name: 'Ferramentas',
-      icon: FaTools,
+      name: 'DevOps & Infrastructure',
+      icon: FaCloud,
       color: 'from-orange-400 to-orange-600',
       skills: [
-        { name: 'Git', level: 92, description: 'Controle de versão distribuído' },
-        { name: 'GitHub Actions', level: 85, description: 'Automação de workflows' },
-        { name: 'VS Code', level: 95, description: 'Editor de código preferido' },
-        { name: 'Figma', level: 80, description: 'Design de interfaces' },
-        { name: 'Jest', level: 88, description: 'Framework de testes JavaScript' },
+        { name: 'Docker', level: 88, description: 'Containerização de aplicações' },
+        { name: 'Linux', level: 90, description: 'Sistema operacional para servidores' },
+        { name: 'Windows Server', level: 85, description: 'Administração de servidores Windows' },
+        { name: 'VMware vCenter', level: 82, description: 'Virtualização de infraestrutura' },
+        { name: 'Dynatrace', level: 80, description: 'Monitoramento e observabilidade' },
+        { name: 'Zabbix', level: 78, description: 'Sistema de monitoramento de rede' },
+        { name: 'Grafana', level: 75, description: 'Visualização de métricas e dados' },
       ],
     },
   ];
@@ -198,10 +200,10 @@ const Skills: React.FC = () => {
             className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8"
           >
             {[
-              { number: '5+', label: 'Anos de Experiência', icon: FaCode },
-              { number: '50+', label: 'Projetos Concluídos', icon: FaTools },
+              { number: '9+', label: 'Anos de Experiência', icon: FaCode },
+              { number: '15+', label: 'Projetos Desenvolvidos', icon: FaTools },
               { number: '20+', label: 'Tecnologias Dominadas', icon: FaDatabase },
-              { number: '100%', label: 'Satisfação do Cliente', icon: FaAws },
+              { number: '100%', label: 'Disponível para Novos Projetos', icon: FaAws },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -232,9 +234,9 @@ const Skills: React.FC = () => {
             </h3>
             <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               {[
-                { name: 'AWS Solutions Architect', issuer: 'Amazon Web Services', year: '2022' },
-                { name: 'React Developer', issuer: 'Meta', year: '2021' },
-                { name: 'JavaScript Algorithms', issuer: 'freeCodeCamp', year: '2020' },
+                { name: 'Java', issuer: 'EISnt, Portugal', year: '2024' },
+                { name: 'HTML', issuer: 'EISnt, Portugal', year: '2024' },
+                { name: 'C/C++', issuer: 'EISnt, Portugal', year: '2024' },
               ].map((cert, index) => (
                 <motion.div
                   key={cert.name}
