@@ -1,5 +1,7 @@
 # 🚀 Portfólio Lucas Machado
 
+- Portfólio: [LucasMachado-Inovacoes](https://lucasmachado-inovacoes.netlify.app/)
+  
 Um portfólio moderno e responsivo desenvolvido com React, TypeScript e Tailwind CSS, seguindo a identidade visual personalizada.
 
 ## ✨ Características
@@ -38,7 +40,7 @@ O projeto utiliza as cores e tipografias definidas no guia de identidade:
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/lucasmachado/portfolio.git
+git clone https://github.com/LucasMachado77/Portfolio-LucasMachado-Inovacoes.git
 cd portfolio
 ```
 
@@ -157,9 +159,9 @@ Contribuições são bem-vindas! Sinta-se à vontade para:
 ## 📞 Contato
 
 **Lucas Machado**
-- Email: lucas@example.com
-- LinkedIn: [linkedin.com/in/lucasmachado](https://linkedin.com/in/lucasmachado)
-- GitHub: [github.com/lucasmachado](https://github.com/lucasmachado)
+- Email: eng.lucasmachador@gmail.com
+- LinkedIn: [linkedin.com/in/lucasmachado]([https://linkedin.com/in/lucas-machado-/](https://www.linkedin.com/in/lucas-machado-/)
+- GitHub: [github.com/LucasMachado77](https://github.com/LucasMachado77)
 
 ---
 
