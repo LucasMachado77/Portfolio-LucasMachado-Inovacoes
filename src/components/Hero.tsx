@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaTwitter, FaDownload } from 'react-icons/fa';
 import logoImage from '../assets/Logo.png';
+import { useTranslation } from '../hooks/useTranslation';
 
 /**
  * Componente da seção principal (Hero)
  * Apresenta o desenvolvedor com call-to-action e links sociais
  */
 const Hero: React.FC = () => {
-  // Dados do desenvolvedor
-  const developerInfo = {
-    name: 'Lucas Machado',
-    title: 'Full Stack Developer',
-    subtitle: 'Developer & Systems Engineer',
-    description: 'Developer & Systems Engineer with experience in critical infrastructure, automation, and web/mobile development. Built SaaS with React, TypeScript, Vite, Tailwind and Supabase/PostgreSQL. Skilled in webhooks/API integrations, Docker, and observability.',
-    location: 'Portugal',
-    email: 'eng.lucasmachador@gmail.com',
-  };
+  const { t } = useTranslation();
+
+  // Dados do desenvolvedor usando traduções - recriados quando o idioma muda
+  const developerInfo = useMemo(() => ({
+    name: t.hero.name,
+    title: t.hero.title,
+    subtitle: t.hero.subtitle,
+    description: t.hero.description,
+    location: t.hero.location,
+    email: t.hero.email,
+  }), [t.hero]);
 
   // Links sociais
   const socialLinks = [
@@ -85,7 +88,7 @@ const Hero: React.FC = () => {
             className="mb-4"
           >
             <span className="inline-block px-4 py-2 bg-primary-500/10 text-primary-500 rounded-full text-sm font-medium mb-4">
-              Olá, eu sou
+              {t.hero.greeting}
             </span>
           </motion.div>
 
@@ -147,7 +150,7 @@ const Hero: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Ver Meus Projetos
+              {t.hero.ctaProjects}
             </motion.a>
             <motion.a
               href="#contact"
@@ -156,7 +159,7 @@ const Hero: React.FC = () => {
               whileTap={{ scale: 0.95 }}
             >
               <FaDownload className="w-4 h-4" />
-              Baixar CV
+              {t.hero.ctaCV}
             </motion.a>
           </motion.div>
 

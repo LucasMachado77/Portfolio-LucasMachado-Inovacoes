@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import LanguageSelector from './LanguageSelector';
+import { useTranslation } from '../hooks/useTranslation';
 
 /**
  * Interface para os itens do menu de navegação
@@ -17,15 +18,16 @@ interface NavItem {
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { t } = useTranslation();
 
-  // Itens do menu de navegação
-  const navItems: NavItem[] = [
-    { name: 'Início', href: '#hero' },
-    { name: 'Sobre', href: '#about' },
-    { name: 'Habilidades', href: '#skills' },
-    { name: 'Projetos', href: '#projects' },
-    { name: 'Contato', href: '#contact' },
-  ];
+  // Itens do menu de navegação - recriados quando o idioma muda
+  const navItems: NavItem[] = useMemo(() => [
+    { name: t.nav.home, href: '#hero' },
+    { name: t.nav.about, href: '#about' },
+    { name: t.nav.skills, href: '#skills' },
+    { name: t.nav.projects, href: '#projects' },
+    { name: t.nav.contact, href: '#contact' },
+  ], [t.nav]);
 
   // Efeito de scroll para mudar aparência do header
   useEffect(() => {
@@ -99,7 +101,7 @@ const Header: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Vamos Conversar
+              {t.contact.subtitle}
             </motion.a>
           </div>
 
@@ -178,7 +180,7 @@ const Header: React.FC = () => {
               animate={{ opacity: isMenuOpen ? 1 : 0, y: isMenuOpen ? 0 : 20 }}
               transition={{ delay: (navItems.length + 1) * 0.1 }}
             >
-              Vamos Conversar
+              {t.contact.subtitle}
             </motion.a>
           </div>
         </motion.div>

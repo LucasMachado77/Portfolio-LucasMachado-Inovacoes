@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt, FaEye, FaCode } from 'react-icons/fa';
+import signaLogo from '../assets/signa-logo.svg';
+import timeCapsuleLogo from '../assets/timecapsule-logo.svg';
 
 /**
  * Interface para projetos
@@ -35,7 +37,7 @@ const Projects: React.FC = () => {
       title: 'SIGNA - SaaS Platform',
       description: 'Plataforma SaaS para cuidados primários de saúde com catálogo de cursos estilo Netflix e assistentes de IA.',
       longDescription: 'Plataforma SaaS completa para profissionais de saúde com catálogo de cursos estilo Netflix, recursos de comunidade e assistentes de IA especializados. Implementa autenticação Supabase com controle de acesso baseado em funções e RLS em tabelas e buckets de armazenamento.',
-      image: '/api/placeholder/600/400',
+      image: signaLogo,
       technologies: ['React', 'TypeScript', 'Vite', 'Tailwind', 'Supabase', 'PostgreSQL'],
       category: 'web',
       githubUrl: 'https://github.com/LucasMachado77/SIGNA',
@@ -61,7 +63,7 @@ const Projects: React.FC = () => {
       title: 'Time Capsule - Mobile App',
       description: 'Aplicativo Android para gravação de fotos geolocalizadas com condições de desbloqueio baseadas em sensores de luz.',
       longDescription: 'Aplicativo móvel desenvolvido em Kotlin para Android que permite gravar fotos geolocalizadas com condições especiais de desbloqueio baseadas em sensores de luz ambiente. Integra câmera, sensores e armazenamento local.',
-      image: '/api/placeholder/600/400',
+      image: timeCapsuleLogo,
       technologies: ['Kotlin', 'Android SDK', 'SQLite', 'Camera API', 'Sensors'],
       category: 'mobile',
       githubUrl: 'https://github.com/LucasMachado77/TimeCapsule',
@@ -283,7 +285,15 @@ const Projects: React.FC = () => {
                     <div className="relative h-48 bg-gradient-to-br from-primary-500 to-accent-500 overflow-hidden">
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <FaEye className="w-12 h-12 text-white opacity-80" />
+                        {project.id === 1 || project.id === 3 ? (
+                          <img 
+                            src={project.image} 
+                            alt={project.title}
+                            className="w-24 h-24 object-contain"
+                          />
+                        ) : (
+                          <FaEye className="w-12 h-12 text-white opacity-80" />
+                        )}
                       </div>
                       {project.featured && (
                         <div className="absolute top-4 left-4 px-3 py-1 bg-accent-500 text-white text-sm font-medium rounded-full">
