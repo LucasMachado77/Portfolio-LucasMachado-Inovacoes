@@ -61,44 +61,44 @@ const Footer: React.FC = () => {
     <footer className="bg-primary-900 text-white relative overflow-hidden">
       {/* Elementos decorativos de fundo */}
       <div className="absolute top-0 left-0 w-full h-full opacity-5">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-48 h-48 bg-white rounded-full blur-3xl"></div>
+        <div className="absolute top-6 xs:top-8 sm:top-10 left-6 xs:left-8 sm:left-10 w-24 xs:w-28 sm:w-32 h-24 xs:h-28 sm:h-32 bg-white rounded-full blur-2xl xs:blur-3xl"></div>
+        <div className="absolute bottom-6 xs:bottom-8 sm:bottom-10 right-6 xs:right-8 sm:right-10 w-32 xs:w-40 sm:w-48 h-32 xs:h-40 sm:h-48 bg-white rounded-full blur-2xl xs:blur-3xl"></div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="section-container relative z-10">
         {/* Conteúdo principal do footer */}
-        <div className="py-16">
-          <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
+        <div className="py-12 xs:py-14 sm:py-16">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 xs:gap-8">
             {/* Informações da marca */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-2"
+              className="sm:col-span-2 lg:col-span-2"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-accent-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">LM</span>
+              <div className="flex items-center gap-2 xs:gap-3 mb-4 xs:mb-6">
+                <div className="w-10 h-10 xs:w-12 xs:h-12 bg-gradient-to-br from-primary-500 to-accent-500 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-lg xs:text-xl">LM</span>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white">{developerName}</h3>
-                  <p className="text-white-300">{t.footer.brand.tagline}</p>
+                  <h3 className="text-xl xs:text-2xl font-bold text-white">{developerName}</h3>
+                  <p className="text-white-300 text-sm xs:text-base">{t.footer.brand.tagline}</p>
                 </div>
               </div>
               
-              <p className="text-white-200 mb-6 max-w-md leading-relaxed">
+              <p className="text-white-200 mb-4 xs:mb-6 max-w-md leading-relaxed text-sm xs:text-base">
                 {t.footer.brand.description}
               </p>
 
               {/* Links sociais */}
-              <div className="flex gap-4">
+              <div className="flex gap-3 xs:gap-4">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={social.name}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center text-primary-200 ${social.color} transition-all duration-300 hover:bg-white/20 hover:scale-110`}
+                    className={`w-10 h-10 xs:w-12 xs:h-12 bg-white/10 rounded-lg flex items-center justify-center text-primary-200 ${social.color} transition-all duration-300 hover:bg-white/20 hover:scale-110`}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     initial={{ opacity: 0, y: 20 }}
@@ -106,7 +106,7 @@ const Footer: React.FC = () => {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <social.icon className="w-5 h-5" />
+                    <social.icon className="w-4 h-4 xs:w-5 xs:h-5" />
                   </motion.a>
                 ))}
               </div>
@@ -119,8 +119,8 @@ const Footer: React.FC = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-               <h4 className="text-lg font-semibold mb-6 text-white">{t.footer.navigation.title}</h4>
-              <ul className="space-y-3">
+               <h4 className="text-base xs:text-lg font-semibold mb-4 xs:mb-6 text-white">{t.footer.navigation.title}</h4>
+              <ul className="space-y-2 xs:space-y-3">
                 {navLinks.map((link, index) => (
                   <motion.li
                     key={link.name}
@@ -131,7 +131,7 @@ const Footer: React.FC = () => {
                   >
                     <a
                       href={link.href}
-                      className="text-primary-200 hover:text-white transition-colors duration-300 hover:translate-x-1 inline-block"
+                      className="text-primary-200 hover:text-white transition-colors duration-300 hover:translate-x-1 inline-block text-sm xs:text-base"
                     >
                       {link.name}
                     </a>
@@ -147,8 +147,8 @@ const Footer: React.FC = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-               <h4 className="text-lg font-semibold mb-6 text-white">{t.footer.usefulLinks.title}</h4>
-              <ul className="space-y-3">
+               <h4 className="text-base xs:text-lg font-semibold mb-4 xs:mb-6 text-white">{t.footer.usefulLinks.title}</h4>
+              <ul className="space-y-2 xs:space-y-3">
                 {usefulLinks.map((link, index) => (
                   <motion.li
                     key={link.name}
@@ -160,7 +160,7 @@ const Footer: React.FC = () => {
                     {link.onClick ? (
                       <button
                         onClick={link.onClick}
-                        className="text-primary-200 hover:text-white transition-colors duration-300 hover:translate-x-1 inline-block text-left"
+                        className="text-primary-200 hover:text-white transition-colors duration-300 hover:translate-x-1 inline-block text-left text-sm xs:text-base"
                       >
                         {link.name}
                       </button>
@@ -169,7 +169,7 @@ const Footer: React.FC = () => {
                         href={link.href}
                         target={link.href.startsWith('http') ? '_blank' : undefined}
                         rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        className="text-primary-200 hover:text-white transition-colors duration-300 hover:translate-x-1 inline-block"
+                        className="text-primary-200 hover:text-white transition-colors duration-300 hover:translate-x-1 inline-block text-sm xs:text-base"
                       >
                         {link.name}
                       </a>
@@ -190,22 +190,22 @@ const Footer: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="py-8 flex flex-col md:flex-row items-center justify-between gap-4"
+          className="py-6 xs:py-8 flex flex-col sm:flex-row items-center justify-between gap-3 xs:gap-4"
         >
-          <div className="flex items-center gap-2 text-primary-300">
+          <div className="flex items-center gap-2 text-primary-300 text-sm xs:text-base">
             <span>{t.footer.copyright}</span>
           </div>
 
-          <div className="flex items-center gap-2 text-primary-300">
+          <div className="flex items-center gap-1.5 xs:gap-2 text-primary-300 text-sm xs:text-base">
             <span>{t.footer.madeWith}</span>
             <motion.div
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 1, repeat: Infinity }}
             >
-              <FaHeart className="w-4 h-4 text-red-500" />
+              <FaHeart className="w-3 h-3 xs:w-4 xs:h-4 text-red-500" />
             </motion.div>
             <span>{t.footer.and}</span>
-            <FaCode className="w-4 h-4 text-primary-500" />
+            <FaCode className="w-3 h-3 xs:w-4 xs:h-4 text-primary-500" />
             <span>{t.footer.by}</span>
           </div>
         </motion.div>
@@ -214,7 +214,7 @@ const Footer: React.FC = () => {
       {/* Botão de voltar ao topo */}
       <motion.button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-primary-500 hover:bg-primary-600 text-white rounded-full shadow-lg flex items-center justify-center z-40 transition-all duration-300"
+        className="fixed bottom-4 xs:bottom-6 sm:bottom-8 right-4 xs:right-6 sm:right-8 w-10 h-10 xs:w-11 xs:h-11 sm:w-12 sm:h-12 bg-primary-500 hover:bg-primary-600 text-white rounded-full shadow-lg flex items-center justify-center z-40 transition-all duration-300"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         initial={{ opacity: 0, y: 50 }}
@@ -222,7 +222,7 @@ const Footer: React.FC = () => {
         transition={{ delay: 1 }}
       >
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4 xs:w-4.5 xs:h-4.5 sm:w-5 sm:h-5"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

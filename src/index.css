@@ -2,47 +2,103 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Estilos globais baseados na identidade visual */
+/* Estilos globais baseados na identidade visual com responsividade otimizada */
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Previne zoom horizontal em dispositivos móveis */
+    overflow-x: hidden;
   }
   
   body {
     @apply bg-secondary-50 text-primary-900 font-sans;
     line-height: 1.6;
+    /* Previne scroll horizontal */
+    overflow-x: hidden;
+    /* Melhora a renderização de texto em dispositivos móveis */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   h1, h2, h3, h4, h5, h6 {
     @apply font-sans font-bold text-primary-900;
+    /* Quebra de linha inteligente para títulos longos */
+    word-wrap: break-word;
+    hyphens: auto;
   }
   
-  /* Estilos para títulos seguindo o guia de identidade */
+  /* Estilos responsivos para títulos seguindo o guia de identidade */
   h1 {
-    @apply text-4xl md:text-6xl font-bold;
+    @apply text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold;
   }
   
   h2 {
-    @apply text-3xl md:text-4xl font-bold;
+    @apply text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold;
   }
   
   h3 {
-    @apply text-2xl md:text-3xl font-semibold;
+    @apply text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold;
   }
   
-  /* Botões seguindo a identidade visual */
+  h4 {
+    @apply text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold;
+  }
+  
+  h5 {
+    @apply text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-medium;
+  }
+  
+  h6 {
+    @apply text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl font-medium;
+  }
+  
+  /* Botões responsivos seguindo a identidade visual */
   .btn-primary {
-    @apply bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
+    @apply bg-primary-500 hover:bg-primary-600 text-white font-semibold 
+           py-2 px-4 sm:py-3 sm:px-6 
+           text-sm sm:text-base
+           rounded-lg transition-all duration-300 
+           transform hover:scale-105 shadow-lg hover:shadow-xl
+           w-full sm:w-auto;
   }
   
   .btn-secondary {
-    @apply bg-transparent border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300;
+    @apply bg-transparent border-2 border-primary-500 text-primary-500 
+           hover:bg-primary-500 hover:text-white font-semibold 
+           py-2 px-4 sm:py-3 sm:px-6 
+           text-sm sm:text-base
+           rounded-lg transition-all duration-300
+           w-full sm:w-auto;
   }
   
-  /* Cards com estilo moderno */
+  /* Cards responsivos com estilo moderno */
   .card {
-    @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative;
+    @apply bg-white rounded-xl shadow-lg hover:shadow-xl 
+           transition-all duration-300 transform hover:-translate-y-1 
+           relative p-4 sm:p-6 lg:p-8;
     z-index: 10;
+  }
+  
+  /* Container responsivo para seções */
+  .section-container {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Grid responsivo para layouts flexíveis */
+  .responsive-grid {
+    @apply grid gap-4 sm:gap-6 lg:gap-8;
+  }
+  
+  .responsive-grid-2 {
+    @apply grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8;
+  }
+  
+  .responsive-grid-3 {
+    @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8;
+  }
+  
+  .responsive-grid-4 {
+    @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8;
   }
   
   /* Gradientes usando as cores da identidade */
@@ -101,9 +157,15 @@
   }
 }
 
-/* Estilos para scrollbar personalizada */
+/* Estilos para scrollbar personalizada responsiva */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+}
+
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
 }
 
 ::-webkit-scrollbar-track {
@@ -116,6 +178,49 @@
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-primary-600;
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 767px) {
+  /* Reduz padding em telas pequenas */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Ajusta tamanhos de fonte para melhor legibilidade */
+  p {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  
+  /* Melhora espaçamento entre elementos */
+  .space-y-4 > * + * {
+    margin-top: 1rem;
+  }
+  
+  .space-y-6 > * + * {
+    margin-top: 1.25rem;
+  }
+  
+  .space-y-8 > * + * {
+    margin-top: 1.5rem;
+  }
+}
+
+/* Estilos para tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Estilos para telas grandes */
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1800px;
+  }
 }
 
 /* Efeito de glassmorphism para elementos flutuantes */

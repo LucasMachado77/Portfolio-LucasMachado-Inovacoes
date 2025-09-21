@@ -55,29 +55,29 @@ const Header: React.FC = () => {
           : 'bg-transparent'
       }`}
     >
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+      <nav className="section-container">
+        <div className="flex items-center justify-between h-14 xs:h-16 sm:h-18 md:h-20">
           {/* Logo */}
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2 relative z-10 cursor-pointer"
+            className="flex items-center space-x-1 xs:space-x-2 relative z-10 cursor-pointer"
           >
-            <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-primary-900 to-primary-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm md:text-base">LM</span>
+            <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-gradient-to-br from-primary-900 to-primary-500 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-xs xs:text-sm sm:text-sm md:text-base">LM</span>
             </div>
-            <span className="font-bold text-primary-900 text-lg md:text-xl hover:text-primary-500 transition-colors duration-300">
+            <span className="font-bold text-primary-900 text-sm xs:text-base sm:text-lg md:text-xl hover:text-primary-500 transition-colors duration-300 hidden xs:block">
               Lucas Machado
             </span>
           </motion.a>
 
           {/* Menu Desktop */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navItems.map((item, index) => (
               <motion.a
                 key={item.name}
                 href={item.href}
-                className="text-primary-900 hover:text-primary-500 font-medium transition-colors duration-300 relative group"
+                className="text-primary-900 hover:text-primary-500 font-medium transition-colors duration-300 relative group text-sm xl:text-base"
                 whileHover={{ y: -2 }}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -90,14 +90,14 @@ const Header: React.FC = () => {
           </div>
 
           {/* Botões de Ação Desktop */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-3 xl:space-x-4">
             {/* Seletor de Idioma */}
             <LanguageSelector />
 
             {/* Botão de Contato */}
             <motion.a
               href="#contact"
-              className="btn-primary"
+              className="btn-primary text-sm xl:text-base"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -105,40 +105,46 @@ const Header: React.FC = () => {
             </motion.a>
           </div>
 
-          {/* Botão Menu Mobile */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-primary-900 hover:bg-secondary-100 transition-colors duration-300"
-            aria-label="Toggle menu"
-          >
-            <svg
-              className={`w-6 h-6 transition-transform duration-300 ${
-                isMenuOpen ? 'rotate-90' : ''
-              }`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          {/* Botões Mobile/Tablet */}
+          <div className="lg:hidden flex items-center space-x-2 xs:space-x-3">
+            {/* Seletor de Idioma Mobile/Tablet */}
+            <LanguageSelector />
+
+            {/* Botão Menu Mobile/Tablet */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-1.5 xs:p-2 rounded-lg text-primary-900 hover:bg-secondary-100 transition-colors duration-300"
+              aria-label="Toggle menu"
             >
-              {isMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
+              <svg
+                className={`w-5 h-5 xs:w-6 xs:h-6 transition-transform duration-300 ${
+                  isMenuOpen ? 'rotate-90' : ''
+                }`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                {isMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
 
-        {/* Menu Mobile */}
+        {/* Menu Mobile/Tablet */}
         <motion.div
           initial={false}
           animate={{
@@ -146,15 +152,15 @@ const Header: React.FC = () => {
             opacity: isMenuOpen ? 1 : 0,
           }}
           transition={{ duration: 0.3 }}
-          className="md:hidden overflow-hidden"
+          className="lg:hidden overflow-hidden"
         >
-          <div className="py-4 space-y-2">
+          <div className="py-3 xs:py-4 space-y-1 xs:space-y-2">
             {navItems.map((item, index) => (
               <motion.a
                 key={item.name}
                 href={item.href}
                 onClick={handleNavClick}
-                className="block px-4 py-2 text-primary-900 hover:bg-secondary-100 rounded-lg transition-colors duration-300"
+                className="block px-3 xs:px-4 py-2 text-primary-900 hover:bg-secondary-100 rounded-lg transition-colors duration-300 text-sm xs:text-base"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -20 }}
                 transition={{ delay: index * 0.1 }}
@@ -162,20 +168,12 @@ const Header: React.FC = () => {
                 {item.name}
               </motion.a>
             ))}
-            {/* Seletor de Idioma Mobile */}
-            <motion.div
-              className="mx-4 mt-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: isMenuOpen ? 1 : 0, y: isMenuOpen ? 0 : 20 }}
-              transition={{ delay: navItems.length * 0.1 }}
-            >
-              <LanguageSelector />
-            </motion.div>
 
+            {/* Botão de Contato Mobile/Tablet */}
             <motion.a
               href="#contact"
               onClick={handleNavClick}
-              className="block mx-4 mt-2 btn-primary text-center"
+              className="block mx-3 xs:mx-4 mt-2 btn-primary text-center text-sm xs:text-base"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: isMenuOpen ? 1 : 0, y: isMenuOpen ? 0 : 20 }}
               transition={{ delay: (navItems.length + 1) * 0.1 }}
