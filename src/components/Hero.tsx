@@ -24,8 +24,7 @@ const Hero: React.FC = () => {
   // Links sociais
   const socialLinks = [
     { name: 'GitHub', icon: FaGithub, href: 'https://github.com/LucasMachado77', color: 'hover:text-gray-900' },
-    { name: 'LinkedIn', icon: FaLinkedin, href: 'https://linkedin.com/in/lucasmachado', color: 'hover:text-blue-600' },
-    { name: 'Twitter', icon: FaTwitter, href: 'https://twitter.com', color: 'hover:text-blue-400' },
+    { name: 'LinkedIn', icon: FaLinkedin, href: 'https://linkedin.com/in/lucas-machado-/', color: 'hover:text-blue-600' },
   ];
 
   // Animações para os elementos
@@ -166,7 +165,7 @@ const Hero: React.FC = () => {
           {/* Links sociais */}
           <motion.div
             variants={itemVariants}
-            className="flex justify-center gap-6"
+            className="flex justify-center gap-6 mb-16"
           >
             {socialLinks.map((social, index) => (
               <motion.a
