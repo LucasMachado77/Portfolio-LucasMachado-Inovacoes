@@ -1,7 +1,9 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter, FaDownload } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaDownload } from 'react-icons/fa';
 import logoImage from '../assets/Logo.png';
+import cvFileEN from '../assets/CV-EN.pdf';
+import cvFilePT from '../assets/CV-PT.pdf';
 import { useTranslation } from '../hooks/useTranslation';
 
 /**
@@ -27,6 +29,25 @@ const Hero: React.FC = () => {
     { name: 'LinkedIn', icon: FaLinkedin, href: 'https://linkedin.com/in/lucas-machado-/', color: 'hover:text-blue-600' },
   ];
 
+  // Função genérica para fazer download do CV
+  const handleDownloadCV = (cvFile: string, fileName: string) => {
+    const link = document.createElement('a');
+    link.href = cvFile;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Funções específicas para cada idioma
+  const handleDownloadCVEN = () => {
+    handleDownloadCV(cvFileEN, 'Lucas_Machado_CV_English.pdf');
+  };
+
+  const handleDownloadCVPT = () => {
+    handleDownloadCV(cvFilePT, 'Lucas_Machado_CV_Portugues.pdf');
+  };
+
   // Animações para os elementos
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -51,6 +72,15 @@ const Hero: React.FC = () => {
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 md:pt-24">
       {/* Background com padrão diagonal inspirado na identidade visual */}
       <div className="absolute inset-0 section-pattern"></div>
+      
+      {/* Logo como watermark - posicionada no canto superior direito */}
+      <div className="absolute top-8 right-8 w-24 h-24 md:w-32 md:h-32 opacity-5 pointer-events-none">
+        <img 
+          src={logoImage} 
+          alt="Logo Lucas Machado" 
+          className="w-full h-full object-contain"
+        />
+      </div>
       
       {/* Elementos decorativos de fundo */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl"></div>
@@ -151,15 +181,24 @@ const Hero: React.FC = () => {
             >
               {t.hero.ctaProjects}
             </motion.a>
-            <motion.a
-              href="#contact"
+            <motion.button
+              onClick={handleDownloadCVEN}
               className="btn-secondary inline-flex items-center justify-center gap-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <FaDownload className="w-4 h-4" />
-              {t.hero.ctaCV}
-            </motion.a>
+              {t.hero.ctaCVEN}
+            </motion.button>
+            <motion.button
+              onClick={handleDownloadCVPT}
+              className="btn-secondary inline-flex items-center justify-center gap-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaDownload className="w-4 h-4" />
+              {t.hero.ctaCVPT}
+            </motion.button>
           </motion.div>
 
           {/* Links sociais */}

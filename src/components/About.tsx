@@ -35,7 +35,7 @@ const About: React.FC = () => {
       company: 'Kyndryl',
       period: 'Dec 2024 - Present',
       description: 'Monitored and managed critical production systems (Linux, Flexcube, Sifox, VMware, Dynatrace). Automated routines and incident handling using scripting and IBM Workload Scheduler (IWS).',
-      technologies: ['Linux', 'VMware', 'Dynatrace', 'IBM IWS', 'Automation'],
+      technologies: ['Linux', 'VMware', 'Dynatrace', 'IBM IWS'],
     },
     {
       title: 'Windows Server Specialist',

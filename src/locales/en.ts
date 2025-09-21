@@ -21,7 +21,8 @@ export const en = {
     location: 'Portugal',
     email: 'eng.lucasmachador@gmail.com',
     ctaProjects: 'View My Projects',
-    ctaCV: 'Download CV',
+    ctaCVEN: 'Download CV - English',
+    ctaCVPT: 'Download CV - Portuguese',
   },
 
   // About Section
