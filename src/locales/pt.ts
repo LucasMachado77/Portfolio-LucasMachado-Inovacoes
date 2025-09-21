@@ -272,7 +272,7 @@ export const pt = {
 
   // Footer
   footer: {
-    copyright: '© 2025 Lucas Machado. Todos os direitos reservados.',
+    copyright: '© 2025 Lucas Machado - Inovações Tecnológicas. Todos os direitos reservados.',
     builtWith: 'Construído com React, TypeScript e Tailwind CSS',
     
     // Informações da marca
@@ -298,8 +298,8 @@ export const pt = {
       title: 'Links Úteis',
       links: {
         blog: 'Blog',
-        cvEN: 'CV-EN',
-        cvPT: 'CV-PT',
+        cvEN: 'Baixar CV-EN',
+        cvPT: 'Baixar CV-PT',
         portfolio: 'Portfolio',
         certifications: 'Certificações',
       },

@@ -73,14 +73,6 @@ const Hero: React.FC = () => {
       {/* Background com padrão diagonal inspirado na identidade visual */}
       <div className="absolute inset-0 section-pattern"></div>
       
-      {/* Logo como watermark - no topo */}
-      <div className="absolute top-0 left-0 w-full h-1/2 flex items-start justify-center pt-8 opacity-5 pointer-events-none">
-        <img 
-          src={logoImage} 
-          alt="Logo Lucas Machado" 
-          className="w-full h-full max-w-4xl max-h-4xl object-contain"
-        />
-      </div>
       
       {/* Elementos decorativos de fundo */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl"></div>

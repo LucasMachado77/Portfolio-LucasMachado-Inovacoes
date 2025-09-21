@@ -110,7 +110,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-secondary-50">
+    <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
@@ -146,7 +146,8 @@ const Contact: React.FC = () => {
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 relative"
+                  style={{ zIndex: 10 }}
                 >
                   <div className="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center">
                     <FaEnvelope className="w-6 h-6 text-white" />
@@ -168,7 +169,8 @@ const Contact: React.FC = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 }}
-                  className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 relative"
+                  style={{ zIndex: 10 }}
                 >
                   <div className="w-12 h-12 bg-accent-500 rounded-lg flex items-center justify-center">
                     <FaPhone className="w-6 h-6 text-white" />
@@ -190,7 +192,8 @@ const Contact: React.FC = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 }}
-                  className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 relative"
+                  style={{ zIndex: 10 }}
                 >
                   <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-accent-500 rounded-lg flex items-center justify-center">
                     <FaMapMarkerAlt className="w-6 h-6 text-white" />
@@ -247,7 +250,8 @@ const Contact: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
-                className="mt-8 p-6 bg-gradient-to-r from-primary-500 to-accent-500 rounded-xl text-white"
+                className="mt-8 p-6 bg-gradient-to-r from-primary-500 to-accent-500 rounded-xl text-white relative"
+                style={{ zIndex: 10 }}
               >
                 <h4 className="text-lg font-semibold mb-2">{t.contact.availability.title}</h4>
                 <p className="text-sm opacity-90">

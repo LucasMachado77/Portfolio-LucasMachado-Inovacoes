@@ -113,7 +113,7 @@ const About: React.FC = () => {
                         {exp.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="px-3 py-1 bg-primary-500/10 text-primary-500 text-sm rounded-full"
+                            className="px-3 py-1 bg-primary-500/20 text-primary-500 text-sm rounded-full"
                           >
                             {tech}
                           </span>
@@ -179,12 +179,12 @@ const About: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.2 }}
-                  className="card p-6 text-center"
+                  className="card p-6 text-center bg-white"
                 >
                   <div className={`w-16 h-16 ${
-                    index === 0 ? 'bg-primary-500/10' : 
-                    index === 1 ? 'bg-accent-500/10' : 
-                    'bg-gradient-to-r from-primary-500/10 to-accent-500/10'
+                    index === 0 ? 'bg-primary-500/20' : 
+                    index === 1 ? 'bg-accent-500/20' : 
+                    'bg-gradient-to-r from-primary-500/20 to-accent-500/20'
                   } rounded-full flex items-center justify-center mx-auto mb-4`}>
                     <span className="text-2xl">
                       {index === 0 ? '🚀' : index === 1 ? '🎯' : '🤝'}

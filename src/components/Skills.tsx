@@ -124,7 +124,7 @@ const Skills: React.FC = () => {
   );
 
   return (
-    <section id="skills" className="py-20 bg-secondary-50">
+    <section id="skills" className="py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
@@ -157,7 +157,7 @@ const Skills: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: categoryIndex * 0.2 }}
-                className="card p-8"
+                className="card p-8 bg-white"
               >
                 {/* Cabeçalho da categoria */}
                 <div className="flex items-center gap-4 mb-6">
@@ -248,7 +248,7 @@ const Skills: React.FC = () => {
                   transition={{ delay: index * 0.1 }}
                   className="card p-6 text-center hover:shadow-xl transition-shadow duration-300"
                 >
-                  <div className="w-12 h-12 bg-primary-500/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 bg-primary-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl">🏆</span>
                   </div>
                   <h4 className="font-semibold text-primary-900 mb-2">{cert.name}</h4>

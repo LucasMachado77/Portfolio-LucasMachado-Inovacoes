@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaHeart, FaCode, FaInstagram } from 'react-icons/fa';
+import cvFileEN from '../assets/CV-EN.pdf';
+import cvFilePT from '../assets/CV-PT.pdf';
 import { useTranslation } from '../hooks/useTranslation';
 
 /**
@@ -12,6 +14,25 @@ const Footer: React.FC = () => {
   
   // Dados do desenvolvedor
   const developerName = 'Lucas Machado';
+
+  // Função genérica para fazer download do CV
+  const handleDownloadCV = (cvFile: string, fileName: string) => {
+    const link = document.createElement('a');
+    link.href = cvFile;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Funções específicas para cada idioma
+  const handleDownloadCVEN = () => {
+    handleDownloadCV(cvFileEN, 'Lucas_Machado_CV_English.pdf');
+  };
+
+  const handleDownloadCVPT = () => {
+    handleDownloadCV(cvFilePT, 'Lucas_Machado_CV_Portugues.pdf');
+  };
 
   // Links sociais
   const socialLinks = [
@@ -31,10 +52,10 @@ const Footer: React.FC = () => {
 
   // Links úteis usando traduções - recriados quando o idioma muda
   const usefulLinks = useMemo(() => [
-    { name: t.footer.usefulLinks.links.cvEN, href: '#' },
-    { name: t.footer.usefulLinks.links.cvPT, href: '#' },
-    { name: t.footer.usefulLinks.links.portfolio, href: 'https://github.com/LucasMachado77' },
-  ], [t.footer.usefulLinks.links]);
+    { name: t.footer.usefulLinks.links.cvEN, href: '#', onClick: handleDownloadCVEN },
+    { name: t.footer.usefulLinks.links.cvPT, href: '#', onClick: handleDownloadCVPT },
+    { name: t.footer.usefulLinks.links.portfolio, href: 'https://github.com/LucasMachado777/Portfolio-LucasMachado-Inovacoes' },
+  ], [t.footer.usefulLinks.links, handleDownloadCVEN, handleDownloadCVPT]);
 
   return (
     <footer className="bg-primary-900 text-white relative overflow-hidden">
@@ -98,7 +119,7 @@ const Footer: React.FC = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-               <h4 className="text-lg font-semibold mb-6">{t.footer.navigation.title}</h4>
+               <h4 className="text-lg font-semibold mb-6 text-white">{t.footer.navigation.title}</h4>
               <ul className="space-y-3">
                 {navLinks.map((link, index) => (
                   <motion.li
@@ -126,7 +147,7 @@ const Footer: React.FC = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-               <h4 className="text-lg font-semibold mb-6">{t.footer.usefulLinks.title}</h4>
+               <h4 className="text-lg font-semibold mb-6 text-white">{t.footer.usefulLinks.title}</h4>
               <ul className="space-y-3">
                 {usefulLinks.map((link, index) => (
                   <motion.li
@@ -136,12 +157,23 @@ const Footer: React.FC = () => {
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 + index * 0.05 }}
                   >
-                    <a
-                      href={link.href}
-                      className="text-primary-200 hover:text-white transition-colors duration-300 hover:translate-x-1 inline-block"
-                    >
-                      {link.name}
-                    </a>
+                    {link.onClick ? (
+                      <button
+                        onClick={link.onClick}
+                        className="text-primary-200 hover:text-white transition-colors duration-300 hover:translate-x-1 inline-block text-left"
+                      >
+                        {link.name}
+                      </button>
+                    ) : (
+                      <a
+                        href={link.href}
+                        target={link.href.startsWith('http') ? '_blank' : undefined}
+                        rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        className="text-primary-200 hover:text-white transition-colors duration-300 hover:translate-x-1 inline-block"
+                      >
+                        {link.name}
+                      </a>
+                    )}
                   </motion.li>
                 ))}
               </ul>

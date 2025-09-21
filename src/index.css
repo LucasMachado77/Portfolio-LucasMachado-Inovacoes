@@ -41,7 +41,8 @@
   
   /* Cards com estilo moderno */
   .card {
-    @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1;
+    @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative;
+    z-index: 10;
   }
   
   /* Gradientes usando as cores da identidade */

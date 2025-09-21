@@ -5,6 +5,7 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Watermark from './components/Watermark';
 import LanguageProvider from './contexts/LanguageContext';
 
 /**
@@ -15,6 +16,7 @@ function App() {
   return (
     <LanguageProvider>
       <div className="min-h-screen bg-secondary-50">
+        <Watermark />
         <Header />
         <main>
           <Hero />
