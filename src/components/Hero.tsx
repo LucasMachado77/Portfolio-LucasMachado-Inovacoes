@@ -73,12 +73,12 @@ const Hero: React.FC = () => {
       {/* Background com padrão diagonal inspirado na identidade visual */}
       <div className="absolute inset-0 section-pattern"></div>
       
-      {/* Logo como watermark - posicionada no canto superior direito */}
-      <div className="absolute top-8 right-8 w-24 h-24 md:w-32 md:h-32 opacity-5 pointer-events-none">
+      {/* Logo como watermark - no topo */}
+      <div className="absolute top-0 left-0 w-full h-1/2 flex items-start justify-center pt-8 opacity-5 pointer-events-none">
         <img 
           src={logoImage} 
           alt="Logo Lucas Machado" 
-          className="w-full h-full object-contain"
+          className="w-full h-full max-w-4xl max-h-4xl object-contain"
         />
       </div>
       
@@ -116,7 +116,7 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="mb-4"
           >
-            <span className="inline-block px-4 py-2 bg-primary-500/10 text-primary-500 rounded-full text-sm font-medium mb-4">
+            <span className="inline-block px-4 py-2 bg-primary-500 text-white rounded-full text-sm font-medium mb-4">
               {t.hero.greeting}
             </span>
           </motion.div>
@@ -161,10 +161,6 @@ const Hero: React.FC = () => {
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
               <span>{developerInfo.location}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-accent-500 rounded-full"></div>
-              <span>{developerInfo.email}</span>
             </div>
           </motion.div>
 

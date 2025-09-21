@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { FaGraduationCap, FaBriefcase, FaAward, FaCode } from 'react-icons/fa';
+import { useTranslation } from '../hooks/useTranslation';
 
 /**
  * Interface para experiência profissional
@@ -28,52 +29,13 @@ interface Education {
  * Apresenta perfil acadêmico, experiência profissional e objetivos
  */
 const About: React.FC = () => {
-  // Dados de experiência profissional
-  const experiences: Experience[] = [
-    {
-      title: 'SysOps Analyst',
-      company: 'Kyndryl',
-      period: 'Dec 2024 - Present',
-      description: 'Monitored and managed critical production systems (Linux, Flexcube, Sifox, VMware, Dynatrace). Automated routines and incident handling using scripting and IBM Workload Scheduler (IWS).',
-      technologies: ['Linux', 'VMware', 'Dynatrace', 'IBM IWS'],
-    },
-    {
-      title: 'Windows Server Specialist',
-      company: 'Prefeitura Municipal de Maricá',
-      period: 'Mar 2018 - Sep 2023',
-      description: 'Implementation of ITIL as manager in 4 processes: Request Management; Incident Management; Problem Management and Service Desk. Administered Windows Server and VMware vCenter environments.',
-      technologies: ['Windows Server', 'VMware vCenter', 'ITIL', 'Active Directory', 'Zabbix', 'Grafana'],
-    },
-    {
-      title: 'IT Technician',
-      company: 'Perfil X Construtora',
-      period: 'Jul 2015 - Aug 2017',
-      description: 'Provided user support, computer maintenance, and local network administration.',
-      technologies: ['Network Administration', 'User Support', 'Computer Maintenance'],
-    },
-  ];
+  const { t } = useTranslation();
 
-  // Dados de formação acadêmica
-  const education: Education[] = [
-    {
-      degree: 'MSc in Computer Engineering (IoT)',
-      institution: 'Instituto Politécnico de Tomar, Portugal',
-      period: '2024 - 2026',
-      description: 'Mestrado em Engenharia de Computadores com foco em IoT e tecnologias emergentes.',
-    },
-    {
-      degree: 'IT and Systems Technician',
-      institution: 'IEFP, Portugal',
-      period: '2023 - 2024',
-      description: 'Formação técnica em TI e sistemas, preparando para carreira em tecnologia.',
-    },
-    {
-      degree: 'BSc in Mechanical Engineering',
-      institution: 'Estácio, Brazil',
-      period: '2016 - 2023',
-      description: 'Graduação em Engenharia Mecânica com base sólida em resolução de problemas e análise técnica.',
-    },
-  ];
+  // Dados de experiência profissional usando traduções - recriados quando o idioma muda
+  const experiences: Experience[] = useMemo(() => t.about.experience.items, [t.about.experience.items]);
+
+  // Dados de formação acadêmica usando traduções - recriados quando o idioma muda
+  const education: Education[] = useMemo(() => t.about.education.items, [t.about.education.items]);
 
   // Animações
   const containerVariants = {
@@ -109,14 +71,13 @@ const About: React.FC = () => {
           <motion.div variants={itemVariants} className="text-center mb-16">
             <span className="inline-block px-4 py-2 bg-primary-500/10 text-primary-500 rounded-full text-sm font-medium mb-4">
               <FaCode className="inline w-4 h-4 mr-2" />
-              Sobre Mim
+              {t.about.title}
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-primary-900 mb-6">
-              Minha Jornada
+              {t.about.subtitle}
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-              Uma trajetória dedicada ao desenvolvimento de soluções tecnológicas inovadoras 
-              e à constante evolução profissional.
+              {t.about.description}
             </p>
           </motion.div>
 
@@ -127,7 +88,7 @@ const About: React.FC = () => {
                 <div className="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center">
                   <FaBriefcase className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-primary-900">Experiência Profissional</h3>
+                <h3 className="text-2xl font-bold text-primary-900">{t.about.experience.title}</h3>
               </div>
               
               <div className="space-y-6">
@@ -170,7 +131,7 @@ const About: React.FC = () => {
                 <div className="w-12 h-12 bg-accent-500 rounded-lg flex items-center justify-center">
                   <FaGraduationCap className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-primary-900">Formação Acadêmica</h3>
+                <h3 className="text-2xl font-bold text-primary-900">{t.about.education.title}</h3>
               </div>
               
               <div className="space-y-6">
@@ -207,56 +168,32 @@ const About: React.FC = () => {
               <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-accent-500 rounded-lg flex items-center justify-center">
                 <FaAward className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-primary-900">Objetivos & Valores</h3>
+              <h3 className="text-2xl font-bold text-primary-900">{t.about.values.title}</h3>
             </div>
             
             <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="card p-6 text-center"
-              >
-                <div className="w-16 h-16 bg-primary-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">🚀</span>
-                </div>
-                <h4 className="text-lg font-semibold text-primary-900 mb-3">Inovação</h4>
-                <p className="text-secondary-600">
-                  Busco constantemente novas tecnologias e metodologias para criar soluções mais eficientes e impactantes.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="card p-6 text-center"
-              >
-                <div className="w-16 h-16 bg-accent-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">🎯</span>
-                </div>
-                <h4 className="text-lg font-semibold text-primary-900 mb-3">Excelência</h4>
-                <p className="text-secondary-600">
-                  Compromisso com a qualidade do código, seguindo as melhores práticas e padrões da indústria.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                className="card p-6 text-center"
-              >
-                <div className="w-16 h-16 bg-gradient-to-r from-primary-500/10 to-accent-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">🤝</span>
-                </div>
-                <h4 className="text-lg font-semibold text-primary-900 mb-3">Colaboração</h4>
-                <p className="text-secondary-600">
-                  Acredito no poder do trabalho em equipe e na importância de compartilhar conhecimento.
-                </p>
-              </motion.div>
+              {t.about.values.items.map((value, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.2 }}
+                  className="card p-6 text-center"
+                >
+                  <div className={`w-16 h-16 ${
+                    index === 0 ? 'bg-primary-500/10' : 
+                    index === 1 ? 'bg-accent-500/10' : 
+                    'bg-gradient-to-r from-primary-500/10 to-accent-500/10'
+                  } rounded-full flex items-center justify-center mx-auto mb-4`}>
+                    <span className="text-2xl">
+                      {index === 0 ? '🚀' : index === 1 ? '🎯' : '🤝'}
+                    </span>
+                  </div>
+                  <h4 className="text-lg font-semibold text-primary-900 mb-3">{value.title}</h4>
+                  <p className="text-secondary-600">{value.description}</p>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </motion.div>

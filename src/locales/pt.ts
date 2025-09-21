@@ -124,6 +124,40 @@ export const pt = {
     certifications: {
       title: 'Certificações & Cursos',
     },
+
+    // Descrições das habilidades por categoria
+    skillDescriptions: {
+      frontend: {
+        React: 'Desenvolvimento de interfaces modernas e interativas',
+        TypeScript: 'Tipagem estática para JavaScript',
+        Vite: 'Build tool moderno e rápido',
+        'Tailwind CSS': 'Framework CSS utilitário',
+        JavaScript: 'Linguagem principal para desenvolvimento web',
+        'HTML/CSS': 'Fundamentos do desenvolvimento web',
+      },
+      backend: {
+        Supabase: 'Backend-as-a-Service com PostgreSQL',
+        PostgreSQL: 'Banco de dados relacional robusto',
+        MySQL: 'Sistema de gerenciamento de banco de dados',
+        'Ruby on Rails': 'Framework web em Ruby',
+        'API Integration': 'Integração de APIs e webhooks',
+      },
+      mobile: {
+        Kotlin: 'Desenvolvimento Android nativo',
+        Java: 'Linguagem versátil para múltiplas plataformas',
+        Ruby: 'Linguagem elegante e produtiva',
+        'C/C++': 'Linguagens de programação de sistema',
+      },
+      devops: {
+        Docker: 'Containerização de aplicações',
+        Linux: 'Sistema operacional para servidores',
+        'Windows Server': 'Administração de servidores Windows',
+        'VMware vCenter': 'Virtualização de infraestrutura',
+        Dynatrace: 'Monitoramento e observabilidade',
+        Zabbix: 'Sistema de monitoramento de rede',
+        Grafana: 'Visualização de métricas e dados',
+      },
+    },
   },
 
   // Projects Section
@@ -149,6 +183,41 @@ export const pt = {
       completed: 'Concluído',
       inProgress: 'Em Desenvolvimento',
       planned: 'Planejado',
+    },
+
+    // Descrições dos projetos individuais
+    projectDescriptions: {
+      SIGNA: {
+        title: 'SIGNA - SaaS Platform',
+        description: 'Plataforma SaaS para cuidados primários de saúde com catálogo de cursos estilo Netflix e assistentes de IA.',
+        longDescription: 'Plataforma SaaS completa para profissionais de saúde com catálogo de cursos estilo Netflix, recursos de comunidade e assistentes de IA especializados. Implementa autenticação Supabase com controle de acesso baseado em funções e RLS em tabelas e buckets de armazenamento.',
+      },
+      TimeCapsule: {
+        title: 'Time Capsule - Mobile App',
+        description: 'Aplicativo Android para gravação de fotos geolocalizadas com condições de desbloqueio baseadas em sensores de luz.',
+        longDescription: 'Aplicativo móvel desenvolvido em Kotlin para Android que permite gravar fotos geolocalizadas com condições especiais de desbloqueio baseadas em sensores de luz ambiente. Integra câmera, sensores e armazenamento local.',
+      },
+      SIGQ: {
+        title: 'SIGQ Document Management',
+        description: 'Aplicação web para gestão, versionamento e catalogação de documentos institucionais.',
+        longDescription: 'Sistema completo de gestão documental desenvolvido em Ruby on Rails para o Instituto Politécnico de Tomar. Inclui CRUD completo, controle de acesso, upload de arquivos e busca eficiente com versionamento de documentos.',
+      },
+      JavaCRUD: {
+        title: 'Complete CRUD - Java',
+        description: 'Projeto completo de CRUD em Java demonstrando boas práticas de desenvolvimento e arquitetura.',
+        longDescription: 'Sistema CRUD completo desenvolvido em Java seguindo padrões de arquitetura MVC, com interface gráfica Swing, conexão com banco de dados MySQL e implementação de todas as operações básicas de persistência de dados.',
+      },
+      WebProjects: {
+        title: 'Web Development Projects',
+        description: 'Projetos de desenvolvimento web usando HTML e CSS com foco em design responsivo e moderno.',
+        longDescription: 'Coleção de projetos web desenvolvidos com HTML e CSS, incluindo landing pages responsivas, portfólios interativos e interfaces modernas com animações CSS e layouts flexbox/grid.',
+      },
+    },
+
+    // Call-to-action
+    cta: {
+      message: 'Interessado em ver mais projetos ou colaborar em algo novo?',
+      button: 'Vamos Conversar',
     },
   },
 
@@ -183,11 +252,70 @@ export const pt = {
       title: 'Redes Sociais',
       subtitle: 'Siga-me nas redes sociais',
     },
+
+    // Campos de contato
+    fields: {
+      email: 'Email',
+      phone: 'Telefone',
+      location: 'Localização',
+    },
+
+    // Disponibilidade
+    availability: {
+      title: 'Disponibilidade',
+      message: 'Atualmente disponível para novos projetos e oportunidades. Resposta em até 24 horas.',
+    },
+
+    // Formulário
+    formTitle: 'Envie uma Mensagem',
   },
 
   // Footer
   footer: {
     copyright: '© 2025 Lucas Machado. Todos os direitos reservados.',
     builtWith: 'Construído com React, TypeScript e Tailwind CSS',
+    
+    // Informações da marca
+    brand: {
+      tagline: 'Inovações Tecnológicas',
+      description: 'Desenvolvedor Full Stack apaixonado por criar soluções tecnológicas inovadoras. Transformando ideias em realidade através de código limpo e design moderno.',
+    },
+
+    // Navegação
+    navigation: {
+      title: 'Navegação',
+      links: {
+        home: 'Início',
+        about: 'Sobre',
+        skills: 'Habilidades',
+        projects: 'Projetos',
+        contact: 'Contato',
+      },
+    },
+
+    // Links úteis
+    usefulLinks: {
+      title: 'Links Úteis',
+      links: {
+        blog: 'Blog',
+        cvEN: 'CV-EN',
+        cvPT: 'CV-PT',
+        portfolio: 'Portfolio',
+        certifications: 'Certificações',
+      },
+    },
+
+    // Newsletter
+    newsletter: {
+      title: 'Mantenha-se Atualizado',
+      description: 'Receba atualizações sobre novos projetos e tecnologias.',
+      placeholder: 'Seu email',
+      button: 'Inscrever',
+    },
+
+    // Copyright
+    madeWith: 'Feito com',
+    and: 'e',
+    by: 'por Lucas Machado',
   },
 };

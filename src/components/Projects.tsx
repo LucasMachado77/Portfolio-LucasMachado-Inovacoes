@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt, FaEye, FaCode } from 'react-icons/fa';
 import signaLogo from '../assets/signa-logo.svg';
 import timeCapsuleLogo from '../assets/timecapsule-logo.svg';
+import { useTranslation } from '../hooks/useTranslation';
 
 /**
  * Interface para projetos
@@ -26,17 +27,19 @@ interface Project {
  * Exibe projetos em grid responsivo com filtros e modais detalhados
  */
 const Projects: React.FC = () => {
+  const { t } = useTranslation();
+  
   // Estado para filtro de categorias
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  // Dados dos projetos
-  const projects: Project[] = [
+  // Dados dos projetos usando traduções - recriados quando o idioma muda
+  const projects: Project[] = useMemo(() => [
     {
       id: 1,
-      title: 'SIGNA - SaaS Platform',
-      description: 'Plataforma SaaS para cuidados primários de saúde com catálogo de cursos estilo Netflix e assistentes de IA.',
-      longDescription: 'Plataforma SaaS completa para profissionais de saúde com catálogo de cursos estilo Netflix, recursos de comunidade e assistentes de IA especializados. Implementa autenticação Supabase com controle de acesso baseado em funções e RLS em tabelas e buckets de armazenamento.',
+      title: t.projects.projectDescriptions.SIGNA.title,
+      description: t.projects.projectDescriptions.SIGNA.description,
+      longDescription: t.projects.projectDescriptions.SIGNA.longDescription,
       image: signaLogo,
       technologies: ['React', 'TypeScript', 'Vite', 'Tailwind', 'Supabase', 'PostgreSQL'],
       category: 'web',
@@ -47,9 +50,9 @@ const Projects: React.FC = () => {
     },
     {
       id: 3,
-      title: 'Time Capsule - Mobile App',
-      description: 'Aplicativo Android para gravação de fotos geolocalizadas com condições de desbloqueio baseadas em sensores de luz.',
-      longDescription: 'Aplicativo móvel desenvolvido em Kotlin para Android que permite gravar fotos geolocalizadas com condições especiais de desbloqueio baseadas em sensores de luz ambiente. Integra câmera, sensores e armazenamento local.',
+      title: t.projects.projectDescriptions.TimeCapsule.title,
+      description: t.projects.projectDescriptions.TimeCapsule.description,
+      longDescription: t.projects.projectDescriptions.TimeCapsule.longDescription,
       image: timeCapsuleLogo,
       technologies: ['Kotlin', 'Android SDK', 'SQLite', 'Camera API', 'Sensors'],
       category: 'mobile',
@@ -60,9 +63,9 @@ const Projects: React.FC = () => {
     },
     {
       id: 2,
-      title: 'SIGQ Document Management',
-      description: 'Aplicação web para gestão, versionamento e catalogação de documentos institucionais.',
-      longDescription: 'Sistema completo de gestão documental desenvolvido em Ruby on Rails para o Instituto Politécnico de Tomar. Inclui CRUD completo, controle de acesso, upload de arquivos e busca eficiente com versionamento de documentos.',
+      title: t.projects.projectDescriptions.SIGQ.title,
+      description: t.projects.projectDescriptions.SIGQ.description,
+      longDescription: t.projects.projectDescriptions.SIGQ.longDescription,
       image: '/api/placeholder/600/400',
       technologies: ['Ruby on Rails', 'PostgreSQL', 'Bootstrap', 'JavaScript'],
       category: 'web',
@@ -73,9 +76,9 @@ const Projects: React.FC = () => {
     },
     {
       id: 4,
-      title: 'Complete CRUD - Java',
-      description: 'Projeto completo de CRUD em Java demonstrando boas práticas de desenvolvimento e arquitetura.',
-      longDescription: 'Sistema CRUD completo desenvolvido em Java seguindo padrões de arquitetura MVC, com interface gráfica Swing, conexão com banco de dados MySQL e implementação de todas as operações básicas de persistência de dados.',
+      title: t.projects.projectDescriptions.JavaCRUD.title,
+      description: t.projects.projectDescriptions.JavaCRUD.description,
+      longDescription: t.projects.projectDescriptions.JavaCRUD.longDescription,
       image: '/api/placeholder/600/400',
       technologies: ['Java', 'Swing', 'MySQL', 'JDBC', 'MVC Pattern'],
       category: 'web',
@@ -86,9 +89,9 @@ const Projects: React.FC = () => {
     },
     {
       id: 5,
-      title: 'Web Development Projects',
-      description: 'Projetos de desenvolvimento web usando HTML e CSS com foco em design responsivo e moderno.',
-      longDescription: 'Coleção de projetos web desenvolvidos com HTML e CSS, incluindo landing pages responsivas, portfólios interativos e interfaces modernas com animações CSS e layouts flexbox/grid.',
+      title: t.projects.projectDescriptions.WebProjects.title,
+      description: t.projects.projectDescriptions.WebProjects.description,
+      longDescription: t.projects.projectDescriptions.WebProjects.longDescription,
       image: '/api/placeholder/600/400',
       technologies: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
       category: 'web',
@@ -97,14 +100,14 @@ const Projects: React.FC = () => {
       featured: false,
       status: 'completed',
     },
-  ];
+  ], [t.projects.projectDescriptions]);
 
-  // Categorias disponíveis
-  const categories = [
-    { id: 'all', name: 'Todos' },
-    { id: 'web', name: 'Web' },
-    { id: 'mobile', name: 'Mobile' },
-  ];
+  // Categorias disponíveis usando traduções - recriadas quando o idioma muda
+  const categories = useMemo(() => [
+    { id: 'all', name: t.projects.filters.all },
+    { id: 'web', name: t.projects.filters.web },
+    { id: 'mobile', name: t.projects.filters.mobile },
+  ], [t.projects.filters]);
 
   // Filtrar projetos baseado na categoria selecionada
   const filteredProjects = selectedCategory === 'all' 
@@ -170,8 +173,8 @@ const Projects: React.FC = () => {
                     project.status === 'in-progress' ? 'bg-blue-100 text-blue-700' :
                     'bg-gray-100 text-gray-700'
                   }`}>
-                    {project.status === 'completed' ? 'Concluído' :
-                     project.status === 'in-progress' ? 'Em Desenvolvimento' : 'Planejado'}
+                    {project.status === 'completed' ? t.projects.status.completed :
+                     project.status === 'in-progress' ? t.projects.status.inProgress : t.projects.status.planned}
                   </span>
                   <span className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium">
                     {categories.find(cat => cat.id === project.category)?.name}
@@ -206,7 +209,7 @@ const Projects: React.FC = () => {
                 className="btn-secondary inline-flex items-center gap-2"
               >
                 <FaGithub className="w-4 h-4" />
-                Ver Código
+                {t.projects.buttons.viewCode}
               </a>
               <a
                 href={project.liveUrl}
@@ -215,7 +218,7 @@ const Projects: React.FC = () => {
                 className="btn-primary inline-flex items-center gap-2"
               >
                 <FaExternalLinkAlt className="w-4 h-4" />
-                Ver Projeto
+                {t.projects.buttons.viewLive}
               </a>
             </div>
           </div>
@@ -238,14 +241,13 @@ const Projects: React.FC = () => {
           <motion.div variants={itemVariants} className="text-center mb-16">
             <span className="inline-block px-4 py-2 bg-primary-500/10 text-primary-500 rounded-full text-sm font-medium mb-4">
               <FaCode className="inline w-4 h-4 mr-2" />
-              Projetos
+              {t.projects.title}
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-primary-900 mb-6">
-              Meus Projetos
+              {t.projects.subtitle}
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-              Uma seleção dos meus projetos mais recentes e relevantes, 
-              demonstrando minha experiência em diversas tecnologias e domínios.
+              {t.projects.description}
             </p>
           </motion.div>
 
@@ -313,8 +315,8 @@ const Projects: React.FC = () => {
                           project.status === 'in-progress' ? 'bg-blue-100 text-blue-700' :
                           'bg-gray-100 text-gray-700'
                         }`}>
-                          {project.status === 'completed' ? 'Concluído' :
-                           project.status === 'in-progress' ? 'Em Dev' : 'Planejado'}
+                          {project.status === 'completed' ? t.projects.status.completed :
+                           project.status === 'in-progress' ? t.projects.status.inProgress : t.projects.status.planned}
                         </span>
                       </div>
 
@@ -349,7 +351,7 @@ const Projects: React.FC = () => {
                           className="flex-1 py-2 px-4 bg-secondary-100 hover:bg-primary-500 hover:text-white text-secondary-600 text-center rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
                         >
                           <FaGithub className="w-4 h-4" />
-                          Código
+                          {t.projects.buttons.viewCode}
                         </a>
                         <a
                           href={project.liveUrl}
@@ -359,7 +361,7 @@ const Projects: React.FC = () => {
                           className="flex-1 py-2 px-4 bg-primary-500 hover:bg-primary-600 text-white text-center rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
                         >
                           <FaExternalLinkAlt className="w-4 h-4" />
-                          Demo
+                          {t.projects.buttons.viewLive}
                         </a>
                       </div>
                     </div>
@@ -375,7 +377,7 @@ const Projects: React.FC = () => {
             className="text-center mt-16"
           >
             <p className="text-lg text-secondary-600 mb-6">
-              Interessado em ver mais projetos ou colaborar em algo novo?
+              {t.projects.cta.message}
             </p>
             <motion.a
               href="#contact"
@@ -383,7 +385,7 @@ const Projects: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Vamos Conversar
+              {t.projects.cta.button}
             </motion.a>
           </motion.div>
         </motion.div>

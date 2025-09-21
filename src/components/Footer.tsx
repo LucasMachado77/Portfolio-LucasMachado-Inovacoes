@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaHeart, FaCode, FaInstagram } from 'react-icons/fa';
+import { useTranslation } from '../hooks/useTranslation';
 
 /**
  * Componente do rodapé
  * Inclui links sociais, informações de copyright e elementos decorativos
  */
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
+  
   // Dados do desenvolvedor
-  const currentYear = new Date().getFullYear();
   const developerName = 'Lucas Machado';
-  const developerTagline = 'Inovações Tecnológicas';
 
   // Links sociais
   const socialLinks = [
@@ -19,22 +20,21 @@ const Footer: React.FC = () => {
     { name: 'Instagram', icon: FaInstagram, href: 'https://www.instagram.com/lucasmachado___/', color: 'hover:text-blue-400' },
   ];
 
-  // Links de navegação
-  const navLinks = [
-    { name: 'Início', href: '#hero' },
-    { name: 'Sobre', href: '#about' },
-    { name: 'Habilidades', href: '#skills' },
-    { name: 'Projetos', href: '#projects' },
-    { name: 'Contato', href: '#contact' },
-  ];
+  // Links de navegação usando traduções - recriados quando o idioma muda
+  const navLinks = useMemo(() => [
+    { name: t.footer.navigation.links.home, href: '#hero' },
+    { name: t.footer.navigation.links.about, href: '#about' },
+    { name: t.footer.navigation.links.skills, href: '#skills' },
+    { name: t.footer.navigation.links.projects, href: '#projects' },
+    { name: t.footer.navigation.links.contact, href: '#contact' },
+  ], [t.footer.navigation.links]);
 
-  // Links úteis
-  const usefulLinks = [
-    { name: 'Blog', href: '#' },
-    { name: 'CV/Resume', href: '#' },
-    { name: 'Portfolio', href: '#' },
-    { name: 'Certificações', href: '#' },
-  ];
+  // Links úteis usando traduções - recriados quando o idioma muda
+  const usefulLinks = useMemo(() => [
+    { name: t.footer.usefulLinks.links.cvEN, href: '#' },
+    { name: t.footer.usefulLinks.links.cvPT, href: '#' },
+    { name: t.footer.usefulLinks.links.portfolio, href: 'https://github.com/LucasMachado77' },
+  ], [t.footer.usefulLinks.links]);
 
   return (
     <footer className="bg-primary-900 text-white relative overflow-hidden">
@@ -60,14 +60,13 @@ const Footer: React.FC = () => {
                   <span className="text-white font-bold text-xl">LM</span>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold">{developerName}</h3>
-                  <p className="text-primary-300">{developerTagline}</p>
+                  <h3 className="text-2xl font-bold text-white">{developerName}</h3>
+                  <p className="text-white-300">{t.footer.brand.tagline}</p>
                 </div>
               </div>
               
-              <p className="text-primary-200 mb-6 max-w-md leading-relaxed">
-                Desenvolvedor Full Stack apaixonado por criar soluções tecnológicas inovadoras. 
-                Transformando ideias em realidade através de código limpo e design moderno.
+              <p className="text-white-200 mb-6 max-w-md leading-relaxed">
+                {t.footer.brand.description}
               </p>
 
               {/* Links sociais */}
@@ -99,7 +98,7 @@ const Footer: React.FC = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              <h4 className="text-lg font-semibold mb-6">Navegação</h4>
+               <h4 className="text-lg font-semibold mb-6">{t.footer.navigation.title}</h4>
               <ul className="space-y-3">
                 {navLinks.map((link, index) => (
                   <motion.li
@@ -127,7 +126,7 @@ const Footer: React.FC = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <h4 className="text-lg font-semibold mb-6">Links Úteis</h4>
+               <h4 className="text-lg font-semibold mb-6">{t.footer.usefulLinks.title}</h4>
               <ul className="space-y-3">
                 {usefulLinks.map((link, index) => (
                   <motion.li
@@ -150,36 +149,6 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Newsletter (opcional) */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="py-8 border-t border-primary-800"
-        >
-          <div className="max-w-md mx-auto text-center">
-            <h4 className="text-lg font-semibold mb-4">Mantenha-se Atualizado</h4>
-            <p className="text-primary-200 mb-6">
-              Receba atualizações sobre novos projetos e tecnologias.
-            </p>
-            <div className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Seu email"
-                className="flex-1 px-4 py-2 bg-white/10 border border-primary-700 rounded-lg text-white placeholder-primary-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              />
-              <motion.button
-                className="px-6 py-2 bg-primary-500 hover:bg-primary-600 rounded-lg font-medium transition-colors duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Inscrever
-              </motion.button>
-            </div>
-          </div>
-        </motion.div>
-
         {/* Linha divisória */}
         <div className="border-t border-primary-800"></div>
 
@@ -192,20 +161,20 @@ const Footer: React.FC = () => {
           className="py-8 flex flex-col md:flex-row items-center justify-between gap-4"
         >
           <div className="flex items-center gap-2 text-primary-300">
-            <span>© {currentYear} {developerName}. Todos os direitos reservados.</span>
+            <span>{t.footer.copyright}</span>
           </div>
 
           <div className="flex items-center gap-2 text-primary-300">
-            <span>Feito com</span>
+            <span>{t.footer.madeWith}</span>
             <motion.div
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 1, repeat: Infinity }}
             >
               <FaHeart className="w-4 h-4 text-red-500" />
             </motion.div>
-            <span>e</span>
+            <span>{t.footer.and}</span>
             <FaCode className="w-4 h-4 text-primary-500" />
-            <span>por Lucas Machado</span>
+            <span>{t.footer.by}</span>
           </div>
         </motion.div>
       </div>

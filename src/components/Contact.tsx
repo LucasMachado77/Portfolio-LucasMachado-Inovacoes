@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaInstagram, FaLinkedin, FaGithub, FaPaperPlane } from 'react-icons/fa';
+import { useTranslation } from '../hooks/useTranslation';
 
 /**
  * Interface para dados de contato
@@ -29,6 +30,8 @@ interface FormData {
  * Inclui formulário funcional e informações de contato
  */
 const Contact: React.FC = () => {
+  const { t } = useTranslation();
+  
   // Estado do formulário
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -120,14 +123,13 @@ const Contact: React.FC = () => {
           <motion.div variants={itemVariants} className="text-center mb-16">
             <span className="inline-block px-4 py-2 bg-primary-500/10 text-primary-500 rounded-full text-sm font-medium mb-4">
               <FaEnvelope className="inline w-4 h-4 mr-2" />
-              Contato
+              {t.contact.title}
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-primary-900 mb-6">
-              Vamos Trabalhar Juntos
+              {t.contact.subtitle}
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-              Tem um projeto em mente? Estou sempre interessado em novas oportunidades 
-              e desafios. Entre em contato e vamos conversar!
+              {t.contact.description}
             </p>
           </motion.div>
 
@@ -135,7 +137,7 @@ const Contact: React.FC = () => {
             {/* Informações de contato */}
             <motion.div variants={itemVariants}>
               <h3 className="text-2xl font-bold text-primary-900 mb-8">
-                Informações de Contato
+                {t.contact.info.title}
               </h3>
               
               <div className="space-y-6">
@@ -150,7 +152,7 @@ const Contact: React.FC = () => {
                     <FaEnvelope className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <p className="font-semibold text-primary-900">Email</p>
+                    <p className="font-semibold text-primary-900">{t.contact.fields.email}</p>
                     <a 
                       href={`mailto:${contactInfo.email}`}
                       className="text-primary-500 hover:text-primary-600 transition-colors duration-300"
@@ -172,7 +174,7 @@ const Contact: React.FC = () => {
                     <FaPhone className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <p className="font-semibold text-primary-900">Telefone</p>
+                    <p className="font-semibold text-primary-900">{t.contact.fields.phone}</p>
                     <a 
                       href={`tel:${contactInfo.phone}`}
                       className="text-primary-500 hover:text-primary-600 transition-colors duration-300"
@@ -194,7 +196,7 @@ const Contact: React.FC = () => {
                     <FaMapMarkerAlt className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <p className="font-semibold text-primary-900">Localização</p>
+                    <p className="font-semibold text-primary-900">{t.contact.fields.location}</p>
                     <p className="text-secondary-600">{contactInfo.location}</p>
                   </div>
                 </motion.div>
@@ -209,7 +211,7 @@ const Contact: React.FC = () => {
                 className="mt-8"
               >
                 <h4 className="text-lg font-semibold text-primary-900 mb-4">
-                  Redes Sociais
+                  {t.contact.social.title}
                 </h4>
                 <div className="flex gap-4">
                   <a
@@ -247,10 +249,9 @@ const Contact: React.FC = () => {
                 transition={{ delay: 0.4 }}
                 className="mt-8 p-6 bg-gradient-to-r from-primary-500 to-accent-500 rounded-xl text-white"
               >
-                <h4 className="text-lg font-semibold mb-2">Disponibilidade</h4>
+                <h4 className="text-lg font-semibold mb-2">{t.contact.availability.title}</h4>
                 <p className="text-sm opacity-90">
-                  Atualmente disponível para novos projetos e oportunidades. 
-                  Resposta em até 24 horas.
+                  {t.contact.availability.message}
                 </p>
               </motion.div>
             </motion.div>
@@ -259,14 +260,14 @@ const Contact: React.FC = () => {
             <motion.div variants={itemVariants}>
               <div className="card p-8">
                 <h3 className="text-2xl font-bold text-primary-900 mb-6">
-                  Envie uma Mensagem
+                  {t.contact.formTitle}
                 </h3>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Nome */}
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-primary-900 mb-2">
-                      Nome Completo *
+                      {t.contact.form.name} {t.contact.form.required}
                     </label>
                     <input
                       type="text"
@@ -276,14 +277,14 @@ const Contact: React.FC = () => {
                       onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
-                      placeholder="Seu nome completo"
+                      placeholder={t.contact.form.namePlaceholder}
                     />
                   </div>
 
                   {/* Email */}
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-primary-900 mb-2">
-                      Email *
+                      {t.contact.form.email} {t.contact.form.required}
                     </label>
                     <input
                       type="email"
@@ -293,14 +294,14 @@ const Contact: React.FC = () => {
                       onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
-                      placeholder="seu@email.com"
+                      placeholder={t.contact.form.emailPlaceholder}
                     />
                   </div>
 
                   {/* Assunto */}
                   <div>
                     <label htmlFor="subject" className="block text-sm font-medium text-primary-900 mb-2">
-                      Assunto *
+                      {t.contact.form.subject} {t.contact.form.required}
                     </label>
                     <input
                       type="text"
@@ -310,14 +311,14 @@ const Contact: React.FC = () => {
                       onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
-                      placeholder="Qual é o assunto?"
+                      placeholder={t.contact.form.subjectPlaceholder}
                     />
                   </div>
 
                   {/* Mensagem */}
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-primary-900 mb-2">
-                      Mensagem *
+                      {t.contact.form.message} {t.contact.form.required}
                     </label>
                     <textarea
                       id="message"
@@ -327,7 +328,7 @@ const Contact: React.FC = () => {
                       required
                       rows={6}
                       className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 resize-none"
-                      placeholder="Conte-me sobre seu projeto..."
+                      placeholder={t.contact.form.messagePlaceholder}
                     />
                   </div>
 
@@ -338,7 +339,7 @@ const Contact: React.FC = () => {
                       animate={{ opacity: 1, y: 0 }}
                       className="p-4 bg-green-100 border border-green-300 rounded-lg text-green-700"
                     >
-                      Mensagem enviada com sucesso! Entrarei em contato em breve.
+                      {t.contact.form.success}
                     </motion.div>
                   )}
 
@@ -348,7 +349,7 @@ const Contact: React.FC = () => {
                       animate={{ opacity: 1, y: 0 }}
                       className="p-4 bg-red-100 border border-red-300 rounded-lg text-red-700"
                     >
-                      Erro ao enviar mensagem. Tente novamente ou entre em contato diretamente.
+                      {t.contact.form.error}
                     </motion.div>
                   )}
 
@@ -363,12 +364,12 @@ const Contact: React.FC = () => {
                     {isSubmitting ? (
                       <>
                         <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        Enviando...
+                        {t.contact.form.submitting}
                       </>
                     ) : (
                       <>
                         <FaPaperPlane className="w-4 h-4" />
-                        Enviar Mensagem
+                        {t.contact.form.submit}
                       </>
                     )}
                   </motion.button>

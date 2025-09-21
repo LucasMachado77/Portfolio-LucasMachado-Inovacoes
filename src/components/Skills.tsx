@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { 
   FaReact, 
-  FaAws,
+  FaCheckSquare,
   FaDatabase,
   FaCloud,
   FaCode,
   FaTools
 } from 'react-icons/fa';
+import { useTranslation } from '../hooks/useTranslation';
 
 /**
  * Interface para categorias de habilidades
@@ -33,59 +34,61 @@ interface Skill {
  * Organiza habilidades por categorias com barras de progresso animadas
  */
 const Skills: React.FC = () => {
-  // Categorias de habilidades
-  const skillCategories: SkillCategory[] = [
+  const { t } = useTranslation();
+
+  // Categorias de habilidades usando traduções - recriadas quando o idioma muda
+  const skillCategories: SkillCategory[] = useMemo(() => [
     {
-      name: 'Frontend',
+      name: t.skills.categories.frontend,
       icon: FaReact,
       color: 'from-blue-400 to-blue-600',
       skills: [
-        { name: 'React', level: 80, description: 'Desenvolvimento de interfaces modernas e interativas' },
-        { name: 'TypeScript', level: 80, description: 'Tipagem estática para JavaScript' },
-        { name: 'Vite', level: 80, description: 'Build tool moderno e rápido' },
-        { name: 'Tailwind CSS', level: 80, description: 'Framework CSS utilitário' },
-        { name: 'JavaScript', level: 80, description: 'Linguagem principal para desenvolvimento web' },
-        { name: 'HTML/CSS', level: 85, description: 'Fundamentos do desenvolvimento web' },
+        { name: 'React', level: 80, description: t.skills.skillDescriptions.frontend.React },
+        { name: 'TypeScript', level: 80, description: t.skills.skillDescriptions.frontend.TypeScript },
+        { name: 'Vite', level: 80, description: t.skills.skillDescriptions.frontend.Vite },
+        { name: 'Tailwind CSS', level: 80, description: t.skills.skillDescriptions.frontend['Tailwind CSS'] },
+        { name: 'JavaScript', level: 80, description: t.skills.skillDescriptions.frontend.JavaScript },
+        { name: 'HTML/CSS', level: 85, description: t.skills.skillDescriptions.frontend['HTML/CSS'] },
       ],
     },
     {
-      name: 'Backend & Database',
+      name: t.skills.categories.backend,
       icon: FaDatabase,
       color: 'from-green-400 to-green-600',
       skills: [
-        { name: 'Supabase', level: 90, description: 'Backend-as-a-Service com PostgreSQL' },
-        { name: 'PostgreSQL', level: 80, description: 'Banco de dados relacional robusto' },
-        { name: 'MySQL', level: 80, description: 'Sistema de gerenciamento de banco de dados' },
-        { name: 'Ruby on Rails', level: 75, description: 'Framework web em Ruby' },
-        { name: 'API Integration', level: 70, description: 'Integração de APIs e webhooks' },
+        { name: 'Supabase', level: 90, description: t.skills.skillDescriptions.backend.Supabase },
+        { name: 'PostgreSQL', level: 80, description: t.skills.skillDescriptions.backend.PostgreSQL },
+        { name: 'MySQL', level: 80, description: t.skills.skillDescriptions.backend.MySQL },
+        { name: 'Ruby on Rails', level: 75, description: t.skills.skillDescriptions.backend['Ruby on Rails'] },
+        { name: 'API Integration', level: 70, description: t.skills.skillDescriptions.backend['API Integration'] },
       ],
     },
     {
-      name: 'Mobile & Languages',
+      name: t.skills.categories.mobile,
       icon: FaCode,
       color: 'from-purple-400 to-purple-600',
       skills: [
-        { name: 'Kotlin', level: 80, description: 'Desenvolvimento Android nativo' },
-        { name: 'Java', level: 70, description: 'Linguagem versátil para múltiplas plataformas' },
-        { name: 'Ruby', level: 75, description: 'Linguagem elegante e produtiva' },
-        { name: 'C/C++', level: 70, description: 'Linguagens de programação de sistema' },
+        { name: 'Kotlin', level: 80, description: t.skills.skillDescriptions.mobile.Kotlin },
+        { name: 'Java', level: 70, description: t.skills.skillDescriptions.mobile.Java },
+        { name: 'Ruby', level: 75, description: t.skills.skillDescriptions.mobile.Ruby },
+        { name: 'C/C++', level: 70, description: t.skills.skillDescriptions.mobile['C/C++'] },
       ],
     },
     {
-      name: 'DevOps & Infrastructure',
+      name: t.skills.categories.devops,
       icon: FaCloud,
       color: 'from-orange-400 to-orange-600',
       skills: [
-        { name: 'Docker', level: 80, description: 'Containerização de aplicações' },
-        { name: 'Linux', level: 75, description: 'Sistema operacional para servidores' },
-        { name: 'Windows Server', level: 85, description: 'Administração de servidores Windows' },
-        { name: 'VMware vCenter', level: 80, description: 'Virtualização de infraestrutura' },
-        { name: 'Dynatrace', level: 80, description: 'Monitoramento e observabilidade' },
-        { name: 'Zabbix', level: 80, description: 'Sistema de monitoramento de rede' },
-        { name: 'Grafana', level: 80, description: 'Visualização de métricas e dados' },
+        { name: 'Windows Server', level: 85, description: t.skills.skillDescriptions.devops['Windows Server'] },
+        { name: 'Docker', level: 80, description: t.skills.skillDescriptions.devops.Docker },
+        { name: 'Linux', level: 75, description: t.skills.skillDescriptions.devops.Linux },
+        { name: 'VMware vCenter', level: 80, description: t.skills.skillDescriptions.devops['VMware vCenter'] },
+        { name: 'Dynatrace', level: 80, description: t.skills.skillDescriptions.devops.Dynatrace },
+        { name: 'Zabbix', level: 80, description: t.skills.skillDescriptions.devops.Zabbix },
+        { name: 'Grafana', level: 80, description: t.skills.skillDescriptions.devops.Grafana },
       ],
     },
-  ];
+  ], [t.skills.categories, t.skills.skillDescriptions]);
 
   // Animações
   const containerVariants = {
@@ -134,14 +137,13 @@ const Skills: React.FC = () => {
           <motion.div variants={itemVariants} className="text-center mb-16">
             <span className="inline-block px-4 py-2 bg-primary-500/10 text-primary-500 rounded-full text-sm font-medium mb-4">
               <FaCode className="inline w-4 h-4 mr-2" />
-              Habilidades Técnicas
+              {t.skills.title}
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-primary-900 mb-6">
-              Tecnologias & Ferramentas
+              {t.skills.subtitle}
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-              Domínio em diversas tecnologias modernas, sempre atualizado com as últimas tendências 
-              e melhores práticas do mercado.
+              {t.skills.description}
             </p>
           </motion.div>
 
@@ -199,10 +201,10 @@ const Skills: React.FC = () => {
             className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8"
           >
             {[
-              { number: '9+', label: 'Anos de Experiência em TI', icon: FaCode },
-              { number: '10+', label: 'Projetos Desenvolvidos', icon: FaTools },
-              { number: '10+', label: 'Tecnologias Dominadas', icon: FaDatabase },
-              { number: '100%', label: 'Disponível para Novos Projetos', icon: FaAws },
+              { number: '9+', label: t.skills.stats.experience, icon: FaCode },
+              { number: '10+', label: t.skills.stats.projects, icon: FaTools },
+              { number: '10+', label: t.skills.stats.technologies, icon: FaDatabase },
+              { number: '100%', label: t.skills.stats.available, icon: FaCheckSquare },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
