@@ -17,7 +17,6 @@ interface NavItem {
  */
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const { t } = useTranslation();
 
   // Itens do menu de navegação - recriados quando o idioma muda
@@ -29,15 +28,6 @@ const Header: React.FC = () => {
     { name: t.nav.contact, href: '#contact' },
   ], [t.nav]);
 
-  // Efeito de scroll para mudar aparência do header
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Função para fechar menu ao clicar em um link
   const handleNavClick = () => {
@@ -49,11 +39,7 @@ const Header: React.FC = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg' 
-          : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg`}
     >
       <nav className="section-container">
         <div className="flex items-center justify-between h-14 xs:h-16 sm:h-18 md:h-20">

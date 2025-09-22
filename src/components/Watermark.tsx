@@ -7,11 +7,11 @@ import logoImage from '../assets/Logo.png';
  */
 const Watermark: React.FC = () => {
   return (
-    <div className="fixed inset-0 w-full h-full flex items-center justify-center opacity-10 pointer-events-none z-0">
+    <div className="fixed inset-0 w-full h-full flex items-center justify-center opacity-10 dark:opacity-8 pointer-events-none z-0">
       <img 
         src={logoImage} 
         alt="Logo Lucas Machado" 
-        className="w-full h-full max-w-6xl max-h-6xl object-contain"
+        className="w-full h-full max-w-6xl max-h-6xl object-contain dark:invert transition-all duration-300"
       />
     </div>
   );
