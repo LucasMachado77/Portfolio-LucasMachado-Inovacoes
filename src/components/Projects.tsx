@@ -228,7 +228,7 @@ const Projects: React.FC = () => {
   );
 
   return (
-    <section id="projects" className="py-12 xs:py-16 sm:py-20 bg-white">
+    <section id="projects" className="py-12 xs:py-16 sm:py-20 bg-white dark:bg-gray-800 transition-colors duration-300">
       <div className="section-container">
         <motion.div
           variants={containerVariants}

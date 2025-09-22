@@ -275,6 +275,13 @@ export const pt = {
     copyright: '© 2025 Lucas Machado - Inovações Tecnológicas. Todos os direitos reservados.',
     builtWith: 'Construído com React, TypeScript e Tailwind CSS',
     
+    // Toggle de tema
+    theme: {
+      toggle: 'Alternar tema',
+      light: 'Modo claro',
+      dark: 'Modo escuro',
+    },
+    
     // Informações da marca
     brand: {
       tagline: 'Inovações Tecnológicas',

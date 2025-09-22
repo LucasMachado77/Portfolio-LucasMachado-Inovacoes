@@ -132,7 +132,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-12 xs:py-16 sm:py-20 bg-white">
+    <section id="contact" className="py-12 xs:py-16 sm:py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="section-container">
         <motion.div
           variants={containerVariants}

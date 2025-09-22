@@ -112,7 +112,7 @@ const Skills: React.FC = () => {
 
   // Componente para barra de progresso animada
   const ProgressBar: React.FC<{ level: number; delay?: number }> = ({ level, delay = 0 }) => (
-    <div className="w-full bg-secondary-200 rounded-full h-2 overflow-hidden">
+    <div className="w-full bg-secondary-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
       <motion.div
         className="h-full bg-gradient-to-r from-primary-500 to-accent-500 rounded-full"
         initial={{ width: 0 }}
@@ -124,7 +124,7 @@ const Skills: React.FC = () => {
   );
 
   return (
-    <section id="skills" className="py-12 xs:py-16 sm:py-20 bg-white">
+    <section id="skills" className="py-12 xs:py-16 sm:py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="section-container">
         <motion.div
           variants={containerVariants}
@@ -139,10 +139,10 @@ const Skills: React.FC = () => {
               <FaCode className="inline w-3 h-3 xs:w-4 xs:h-4 mr-1.5 xs:mr-2" />
               {t.skills.title}
             </span>
-            <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-primary-900 mb-4 xs:mb-6">
+            <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-primary-900 dark:text-white mb-4 xs:mb-6">
               {t.skills.subtitle}
             </h2>
-            <p className="text-base xs:text-lg sm:text-xl text-secondary-600 max-w-3xl mx-auto px-4 xs:px-0">
+            <p className="text-base xs:text-lg sm:text-xl text-secondary-600 dark:text-gray-300 max-w-3xl mx-auto px-4 xs:px-0">
               {t.skills.description}
             </p>
           </motion.div>
@@ -157,14 +157,14 @@ const Skills: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: categoryIndex * 0.2 }}
-                className="card p-4 xs:p-6 sm:p-8 bg-white"
+                className="card p-4 xs:p-6 sm:p-8 bg-white dark:bg-gray-800"
               >
                 {/* Cabeçalho da categoria */}
                 <div className="flex items-center gap-3 xs:gap-4 mb-4 xs:mb-6">
                   <div className={`w-10 h-10 xs:w-12 xs:h-12 bg-gradient-to-r ${category.color} rounded-lg flex items-center justify-center`}>
                     <category.icon className="w-5 h-5 xs:w-6 xs:h-6 text-white" />
                   </div>
-                  <h3 className="text-lg xs:text-xl sm:text-2xl font-bold text-primary-900">{category.name}</h3>
+                  <h3 className="text-lg xs:text-xl sm:text-2xl font-bold text-primary-900 dark:text-white">{category.name}</h3>
                 </div>
 
                 {/* Lista de habilidades */}
@@ -179,7 +179,7 @@ const Skills: React.FC = () => {
                       className="group"
                     >
                       <div className="flex items-center justify-between mb-1.5 xs:mb-2">
-                        <h4 className="font-semibold text-primary-900 group-hover:text-primary-500 transition-colors duration-300 text-sm xs:text-base">
+                        <h4 className="font-semibold text-primary-900 dark:text-white group-hover:text-primary-500 transition-colors duration-300 text-sm xs:text-base">
                           {skill.name}
                         </h4>
                         <span className="text-xs xs:text-sm text-primary-500 font-medium">
@@ -187,7 +187,7 @@ const Skills: React.FC = () => {
                         </span>
                       </div>
                       <ProgressBar level={skill.level} delay={skillIndex * 0.1} />
-                      <p className="text-xs xs:text-sm text-secondary-600 mt-1.5 xs:mt-2">{skill.description}</p>
+                      <p className="text-xs xs:text-sm text-secondary-600 dark:text-gray-300 mt-1.5 xs:mt-2">{skill.description}</p>
                     </motion.div>
                   ))}
                 </div>

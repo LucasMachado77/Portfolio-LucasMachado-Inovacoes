@@ -317,5 +317,12 @@ export const en = {
     madeWith: 'Made with',
     and: 'and',
     by: 'by Lucas Machado',
+    
+    // Theme toggle
+    theme: {
+      toggle: 'Toggle theme',
+      light: 'Light mode',
+      dark: 'Dark mode',
+    },
   },
 };

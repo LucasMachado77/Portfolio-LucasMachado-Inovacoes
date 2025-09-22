@@ -11,7 +11,7 @@
   }
   
   body {
-    @apply bg-secondary-50 text-primary-900 font-sans;
+    @apply bg-secondary-50 dark:bg-gray-900 text-primary-900 dark:text-white font-sans;
     line-height: 1.6;
     /* Previne scroll horizontal */
     overflow-x: hidden;
@@ -21,7 +21,7 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans font-bold text-primary-900;
+    @apply font-sans font-bold text-primary-900 dark:text-white;
     /* Quebra de linha inteligente para títulos longos */
     word-wrap: break-word;
     hyphens: auto;
@@ -73,7 +73,7 @@
   
   /* Cards responsivos com estilo moderno */
   .card {
-    @apply bg-white rounded-xl shadow-lg hover:shadow-xl 
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl 
            transition-all duration-300 transform hover:-translate-y-1 
            relative p-4 sm:p-6 lg:p-8;
     z-index: 10;

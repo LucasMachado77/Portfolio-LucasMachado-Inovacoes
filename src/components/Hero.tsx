@@ -69,7 +69,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 xs:pt-18 sm:pt-20 md:pt-24">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 xs:pt-18 sm:pt-20 md:pt-24 bg-secondary-50 dark:bg-gray-900 transition-colors duration-300">
       {/* Background com padrão diagonal inspirado na identidade visual */}
       <div className="absolute inset-0 section-pattern"></div>
       
@@ -131,7 +131,7 @@ const Hero: React.FC = () => {
           {/* Subtítulo */}
           <motion.h3
             variants={itemVariants}
-            className="text-base xs:text-lg sm:text-xl md:text-2xl text-secondary-600 mb-4 xs:mb-6"
+            className="text-base xs:text-lg sm:text-xl md:text-2xl text-secondary-600 dark:text-gray-300 mb-4 xs:mb-6"
           >
             {developerInfo.subtitle}
           </motion.h3>
@@ -139,7 +139,7 @@ const Hero: React.FC = () => {
           {/* Descrição */}
           <motion.p
             variants={itemVariants}
-            className="text-sm xs:text-base sm:text-lg md:text-xl text-secondary-700 mb-6 xs:mb-8 max-w-3xl mx-auto leading-relaxed px-4 xs:px-0"
+            className="text-sm xs:text-base sm:text-lg md:text-xl text-secondary-700 dark:text-gray-300 mb-6 xs:mb-8 max-w-3xl mx-auto leading-relaxed px-4 xs:px-0"
           >
             {developerInfo.description}
           </motion.p>
@@ -147,7 +147,7 @@ const Hero: React.FC = () => {
           {/* Informações adicionais */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap justify-center items-center gap-4 xs:gap-6 mb-6 xs:mb-8 text-secondary-600 text-sm xs:text-base"
+            className="flex flex-wrap justify-center items-center gap-4 xs:gap-6 mb-6 xs:mb-8 text-secondary-600 dark:text-gray-300 text-sm xs:text-base"
           >
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 xs:w-2 xs:h-2 bg-primary-500 rounded-full"></div>

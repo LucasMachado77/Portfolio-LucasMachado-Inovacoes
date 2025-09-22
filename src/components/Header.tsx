@@ -51,7 +51,7 @@ const Header: React.FC = () => {
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-lg' 
+          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg' 
           : 'bg-transparent'
       }`}
     >
@@ -66,7 +66,7 @@ const Header: React.FC = () => {
             <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-gradient-to-br from-primary-900 to-primary-500 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-xs xs:text-sm sm:text-sm md:text-base">LM</span>
             </div>
-            <span className="font-bold text-primary-900 text-sm xs:text-base sm:text-lg md:text-xl hover:text-primary-500 transition-colors duration-300 hidden xs:block">
+            <span className="font-bold text-primary-900 dark:text-white text-sm xs:text-base sm:text-lg md:text-xl hover:text-primary-500 transition-colors duration-300 hidden xs:block">
               Lucas Machado
             </span>
           </motion.a>
@@ -77,7 +77,7 @@ const Header: React.FC = () => {
               <motion.a
                 key={item.name}
                 href={item.href}
-                className="text-primary-900 hover:text-primary-500 font-medium transition-colors duration-300 relative group text-sm xl:text-base"
+                className="text-primary-900 dark:text-white hover:text-primary-500 font-medium transition-colors duration-300 relative group text-sm xl:text-base"
                 whileHover={{ y: -2 }}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -113,7 +113,7 @@ const Header: React.FC = () => {
             {/* Botão Menu Mobile/Tablet */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-1.5 xs:p-2 rounded-lg text-primary-900 hover:bg-secondary-100 transition-colors duration-300"
+              className="p-1.5 xs:p-2 rounded-lg text-primary-900 dark:text-white hover:bg-secondary-100 dark:hover:bg-gray-700 transition-colors duration-300"
               aria-label="Toggle menu"
             >
               <svg
@@ -160,7 +160,7 @@ const Header: React.FC = () => {
                 key={item.name}
                 href={item.href}
                 onClick={handleNavClick}
-                className="block px-3 xs:px-4 py-2 text-primary-900 hover:bg-secondary-100 rounded-lg transition-colors duration-300 text-sm xs:text-base"
+                className="block px-3 xs:px-4 py-2 text-primary-900 dark:text-white hover:bg-secondary-100 dark:hover:bg-gray-700 rounded-lg transition-colors duration-300 text-sm xs:text-base"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -20 }}
                 transition={{ delay: index * 0.1 }}

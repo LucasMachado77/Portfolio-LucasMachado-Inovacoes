@@ -4,6 +4,7 @@ import { FaGithub, FaLinkedin, FaHeart, FaCode, FaInstagram } from 'react-icons/
 import cvFileEN from '../assets/CV-EN.pdf';
 import cvFilePT from '../assets/CV-PT.pdf';
 import { useTranslation } from '../hooks/useTranslation';
+import ThemeToggle from './ThemeToggle';
 
 /**
  * Componente do rodapé
@@ -90,7 +91,7 @@ const Footer: React.FC = () => {
                 {t.footer.brand.description}
               </p>
 
-              {/* Links sociais */}
+              {/* Links sociais e toggle de tema */}
               <div className="flex gap-3 xs:gap-4">
                 {socialLinks.map((social, index) => (
                   <motion.a
@@ -109,6 +110,16 @@ const Footer: React.FC = () => {
                     <social.icon className="w-4 h-4 xs:w-5 xs:h-5" />
                   </motion.a>
                 ))}
+                
+                {/* Toggle de tema */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: socialLinks.length * 0.1 }}
+                >
+                  <ThemeToggle />
+                </motion.div>
               </div>
             </motion.div>
 
